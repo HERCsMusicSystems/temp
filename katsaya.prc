@@ -7,7 +7,7 @@ program katsaya #auto
 [[katsaya appearance "Flashing black eyes, dark curly hair."]]
 [[katsaya age "Early 40s"]]
 [[katsaya height "5'1''"]]
-[[katsaya weight "120lbs"]]
+[[katsaya weight "120 lbs"]]
 [[katsaya size_modifier 128]]
 
 [[katsaya dexterity 13]]

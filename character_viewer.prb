@@ -27,7 +27,7 @@
 [[router *req *res] [*req HTTP_URI : *route] [show *route] [route *req *res : *route]]
 
 [[route *req *res GET "index"] [controller_character_list *req *res]]
-[[route *req *res GET ""] [controller_character_list *req *res]]
+[[route *req *res GET ''] [controller_character_list *req *res]]
 [[route *req *res GET character *character] [controller_character *req *res *character]]
 [[route *req *res GET character resources *file : *] [*res [] : *file]]
 [[route *req *res GET ""] [*res "HTTP/1.0 200 OK\n\n<body><h1>Prolog Webserver</h1></body>"]]

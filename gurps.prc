@@ -5,6 +5,8 @@ program gurps ['' d
 				damage damage_table basic_lift basic_lift_table
 				basic_speed basic_speed_formulae basic_speed_cost basic_move basic_move_formulae basic_move_cost
 				language language_cost languages_cost none broken accented native
+				tech_level campaign_tech_level tech_level_cost tech_levels
+				cultural_familiarity cultural_familiarities_cost
 				]
 
 [[strength_cost *level *cost] [lazy [sum 10 *delta *level] [times *delta 10 *cost]]]
@@ -23,6 +25,7 @@ program gurps ['' d
 [[fatigue_points_cost *ch *level *cost] [lazy [health *ch *health] [fatigue_points *ch *level] [sum *health *delta *level] [times 3 *delta *cost]]]
 [[basic_speed_cost *ch *level *cost] [lazy [basic_speed_formulae *ch *formulae] [basic_speed *ch *level] [sum *formulae *delta *level] [~ *cost 20 *delta]]]
 [[basic_move_cost *ch *level *cost] [lazy [basic_move_formulae *ch *formulae] [basic_move *ch *level] [sum *formulae *delta *level] [~ *cost 5 *delta]]]
+[[tech_level_cost *ch *level *cost] [lazy [tech_level *ch *level] [campaign_tech_level *ch *ctl] [sum *ctl *delta *level] [~ 5 *delta *cost]]]
 
 [[name *ch *name] [*ch name *name]] [[name * '']]
 [[player *ch *player] [*ch player *player]] [[player * '']]
@@ -51,6 +54,11 @@ program gurps ['' d
 [[intelligence *ch *iq] [*ch intelligence *iq]] [[intelligence *ch 10]]
 [[health *ch *ht] [*ch health *ht]] [[health *ch 10]]
 
+[[tech_level *ch *tl] [*ch tech_level *tl] /]
+[[tech_level *ch 3]]
+[[campaign_tech_level *ch *tl] [*ch campaign_tech_level *tl] /]
+[[campaign_tech_level *ch *tl] [tech_level *ch *tl]]
+
 [[point_total *ch *pt]
 	[strength_cost *ch * *strength]
 	[dexterity_cost *ch * *dexterity]
@@ -62,8 +70,10 @@ program gurps ['' d
 	[fatigue_points_cost *ch * *fatigue_points]
 	[basic_speed_cost *ch * *basic_speed]
 	[basic_move_cost *ch * *basic_move]
+	[tech_level_cost *ch * *tech_level]
 	[languages_cost *ch *languages]
-	[+ *pt *strength *dexterity *intelligence *health *hit_points *will *perception *fatigue_points *basic_speed *basic_move *languages]
+	[cultural_familiarities_cost *ch *cultural_familiarities]
+	[+ *pt *strength *dexterity *intelligence *health *hit_points *will *perception *fatigue_points *basic_speed *basic_move *languages *tech_level *cultural_familiarities]
 ]
 
 [[damage_table *st [1 d -6] [1 d -5]] [< *st 3] /]
@@ -133,12 +143,29 @@ program gurps ['' d
 [[language_cost accented 2]]
 [[language_cost native 3]]
 
+[[tech_levels 0 "Stone Age" "Prehistory and later" 250]]
+[[tech_levels 1 "Bronze Age" "3500 B.C.+" 500]]
+[[tech_levels 2 "Iron Age" "1200 B.C.+" 750]]
+[[tech_levels 3 "Medieval" "600 A.D.+" 1000]]
+[[tech_levels 4 "Age of Sail" "1450+" 2000]]
+[[tech_levels 5 "Industrial Revolution" "1730+" 5000]]
+[[tech_levels 6 "Mechanized Age" "1880+" 10000]]
+[[tech_levels 7 "Nuclear Age" "1940+" 15000]]
+[[tech_levels 8 "Digital Age" "1980+" 20000]]
+[[tech_levels 9 "Microtech Age" "2025+?" 30000]]
+[[tech_levels 10 "Robotic Age" "2070+?" 50000]]
+[[tech_levels 11 "Age of Exotic Matter" "?" 75000]]
+[[tech_levels * "Whatever the GM likes!" "?" 100000]]
+
 [[languages_cost *ch *cost] [isall *costs *c [language *ch * * * *c]] [+ *cost -6 : *costs]]
+[[cultural_familiarities_cost *ch *cost] [isall *costs *c [cultural_familiarity *ch * *c]] [+ *cost 0 : *costs]]
 
 [[language *ch *language *spoken *written *cost]
 	[*ch language *language : *languages] [SELECT [[= *languages [*spoken *written]]] [[= *languages [*spoken]] [= *languages [*written]]]]
 	[language_cost *spoken *sc] [language_cost *written *wc] [+ *cost *sc *wc]
 ]
+
+[[cultural_familiarity *ch *culture *cost] [*ch cultural_familiarity *culture *cost]]
 
 end .
 

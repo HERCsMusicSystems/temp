@@ -1,5 +1,5 @@
 
-program character_views [chattr decor decormt decorpt view_language lgdc]
+program character_views [chattr decor decormt decorpt view_language view_culture lgdc]
 
 [[chattr *res *ch *ATTR *attr *value]
 	[*attr *ch *value]
@@ -95,8 +95,15 @@ program character_views [chattr decor decormt decorpt view_language lgdc]
 			[*res "<td>Dodge - 4</td>"] [decorpt *res *basic_speed -1] [*res "</tr>"]
 		[*res "</table>"]
 	[*res "</td>"]
-	[languages_cost *ch *languages_cost]
+	[tech_level_cost *ch *tech_level *tech_level_cost] [tech_levels *tech_level *tldescription *tldate : *]
+	[languages_cost *ch *languages_cost] [+ *tldec *tech_level " " *tldescription " (" *tldate ")."]
 	[*res "<td>"]
+		[*res "<table width=100% style=\"border:2px solid;\" >"]
+		[*res "<tr><td width=10% >TL:</td>"] [lgdc *res *tldec] [*res "<td width=10% >" [[*tech_level_cost]] "</td>"] [*res "</tr>"]
+		[*res "<tr><td colspan=3>Cultural Familiarities</td></tr>"]
+		[view_culture *res *ch]
+		[*res "</table>"]
+		[*res "<br/>"]
 		[*res "<table width=100% style=\"border:2px solid;\" >"]
 		[*res "<tr><td>Languages</td><td>Spoken</td><td>Writen</td><td>" [[*languages_cost]] "</td></tr>"]
 		[view_language *res *ch]
@@ -120,7 +127,45 @@ program character_views [chattr decor decormt decorpt view_language lgdc]
 ]
 [[view_language : *]]
 
+[[view_culture *res *ch]
+	[cultural_familiarity *ch *culture *cost]
+	[ONE
+		[*res "<tr><td></td>"]
+		[lgdc *res *culture]
+		[*res "<td>" [[*cost]] "</td>"]
+		[*res "</tr>"]
+	]
+	fail
+]
+[[view_culture : *]]
+;[[view_culture *res *ch] [*res "<tr><td>Sputnik</td></tr>"]]
+
 
 
 end .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

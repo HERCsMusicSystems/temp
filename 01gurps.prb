@@ -1,0 +1,10 @@
+#!/home/rama/bin/studio
+
+[add_search_directory "/home/rama/Desktop/dev/01/"]
+[import "character_viewer"]
+
+[res [http_request *req] [router *req http_responder]]
+
+
+[exit]
+

@@ -1,0 +1,9 @@
+
+[import "character_viewer"]
+
+[daemon service 3008 router]
+
+[command]
+
+[exit]
+

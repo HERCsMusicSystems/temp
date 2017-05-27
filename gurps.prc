@@ -7,6 +7,7 @@ program gurps ['' d
 				language language_cost languages_cost none broken accented native
 				tech_level campaign_tech_level tech_level_cost tech_levels
 				cultural_familiarity cultural_familiarities_cost
+				status status_cost
 				]
 
 [[strength_cost *level *cost] [lazy [sum 10 *delta *level] [times *delta 10 *cost]]]
@@ -58,6 +59,9 @@ program gurps ['' d
 [[tech_level *ch 3]]
 [[campaign_tech_level *ch *tl] [*ch campaign_tech_level *tl] /]
 [[campaign_tech_level *ch *tl] [tech_level *ch *tl]]
+[[status *ch *status *name *cost] [*ch status *status *name] [~ 5 *status *cost]]
+[[status *ch *status *name *cost] [*ch status *status *name *cost]]
+[[status_cost *ch *cost] [isall *costs *c [status *ch *level *name *c]] [+ *cost 0 : *costs] /]
 
 [[point_total *ch *pt]
 	[strength_cost *ch * *strength]
@@ -73,7 +77,9 @@ program gurps ['' d
 	[tech_level_cost *ch * *tech_level]
 	[languages_cost *ch *languages]
 	[cultural_familiarities_cost *ch *cultural_familiarities]
-	[+ *pt *strength *dexterity *intelligence *health *hit_points *will *perception *fatigue_points *basic_speed *basic_move *languages *tech_level *cultural_familiarities]
+	[status_cost *ch *status]
+	[+ *pt *strength *dexterity *intelligence *health *hit_points *will *perception *fatigue_points *basic_speed *basic_move
+		*languages *tech_level *cultural_familiarities *status]
 ]
 
 [[damage_table *st [1 d -6] [1 d -5]] [< *st 3] /]

@@ -1,5 +1,5 @@
 
-program character_views [chattr decor decormt decorpt view_language view_culture attrb lgdc]
+program character_views [chattr decor decormt decorpt view_language view_culture view_status attrb lgdc]
 
 [[chattr *res *ch *ATTR *attr *value]
 	[*attr *ch *value]
@@ -94,14 +94,23 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 	[languages_cost *ch *languages_cost] [+ *tldec *tech_level " " *tldescription " (" *tldate ")."]
 	[*res "<td>"]
 		[*res "<table width=100% style=\"border:2px solid;\" >"]
+		[*res "<tr><td>Languages</td><td>Spoken</td><td>Writen</td><td>" [[*languages_cost]] "</td></tr>"]
+		[view_language *res *ch]
+		[*res "</table>"]
+		[*res "<br/>"]
+		[*res "<table width=100% style=\"border:2px solid;\" >"]
 		[*res "<tr><td width=10% >TL:</td>"] [lgdc *res *tldec] [*res "<td width=10% >" [[*tech_level_cost]] "</td>"] [*res "</tr>"]
 		[*res "<tr><td colspan=3>Cultural Familiarities</td></tr>"]
 		[view_culture *res *ch]
 		[*res "</table>"]
 		[*res "<br/>"]
 		[*res "<table width=100% style=\"border:2px solid;\" >"]
-		[*res "<tr><td>Languages</td><td>Spoken</td><td>Writen</td><td>" [[*languages_cost]] "</td></tr>"]
-		[view_language *res *ch]
+		[status_cost *ch *status_cost]
+		[*res "<tr><td align=center colspan=2>Reaction Modifiers</td><td width=10%>" [[*status_cost]] "</td></tr>"]
+		[*res "<tr><td colspan=3>Appearance</td></tr>"]
+		[*res "<tr><td colspan=3>Status</td></tr>"]
+		[view_status *res *ch]
+		[*res "<tr><td colspan=3>Reputation</td></tr>"]
 		[*res "</table>"]
 	[*res "</td>"]
 	[*res "</tr>"]
@@ -133,6 +142,18 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 	fail
 ]
 [[view_culture : *]]
+
+[[view_status *res *ch]
+	[status *ch *level *name *cost] [+ *level " (" *name ")" *description]
+	[ONE
+		[*res "<tr><td width=10%></td>"]
+		[lgdc *res *description]
+		[*res "<td>" [[*cost]] "</td>"]
+		[*res "</tr>"]
+	]
+	fail
+]
+[[view_status : *]]
 ;[[view_culture *res *ch] [*res "<tr><td>Sputnik</td></tr>"]]
 
 

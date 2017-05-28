@@ -10,6 +10,7 @@ program gurps ['' d build_character
 				status status_cost
 				appearance appearance_cost appearances
 				Horrific Monstrous Hideous Ugly Unattractive Average Attractive Handsome Beautiful 'Very Handsome' 'Very Beautiful' Transcendent
+				reputation reputation_cost reputations all allmost most some
 				]
 
 [[build_character *character *attribute : *attributes] [addcl [[*character : *attribute]]] / [build_character *character : *attributes]]
@@ -71,6 +72,8 @@ program gurps ['' d build_character
 [[appearance *ch *appearance *name *cost] [*ch appearance *appearance *name *cost]]
 [[appearance *ch 0 Average 0] [isall *e *x [*ch appearance * *]] / [= *e []]]
 [[appearance_cost *ch *cost] [isall *costs *c [appearance *ch * * *c]] [+ *cost 0 : *costs] /]
+[[reputation *ch *reputation *name *group *frequency *cost] [*ch reputation *reputation *name *group *frequency] [reputations *reputation *group *frequency *cost]]
+[[reputation_cost *ch *cost] [isall *costs *c [reputation *ch * * * * *c]] [+ *cost 0 : *costs]]
 
 [[point_total *ch *pt]
 	[strength_cost *ch * *strength]
@@ -88,8 +91,9 @@ program gurps ['' d build_character
 	[cultural_familiarities_cost *ch *cultural_familiarities]
 	[appearance_cost *ch *appearance]
 	[status_cost *ch *status]
+	[reputation_cost *ch *reputation]
 	[+ *pt *strength *dexterity *intelligence *health *hit_points *will *perception *fatigue_points *basic_speed *basic_move
-		*languages *tech_level *cultural_familiarities *appearance *status]
+		*languages *tech_level *cultural_familiarities *appearance *status *reputation]
 ]
 
 [[damage_table *st [1 d -6] [1 d -5]] [< *st 3] /]
@@ -185,6 +189,12 @@ program gurps ['' d build_character
 [[appearances [2 6] 'Very Handsome' 16]]
 [[appearances [2 6] 'Very Beautiful' 16]]
 [[appearances [2 8] Transcendent 20]]
+
+[[reputations *reaction all *cost] [~ *reaction 1.0 *cost]]
+[[reputations *reaction allmost *cost] [~ *reaction 0.6666 *cost]]
+[[reputations *reaction most *cost] [~ *reaction 0.5 *cost]]
+[[reputations *reaction some *cost] [~ *reaction 0.3333 *cost]]
+[[reputations *reaction *group *frequency *cost] [reputations *reaction *group *r] [reputations *r *frequency *c] [~ 5 *c *cc] [trunc *cc *cost]]
 
 [[languages_cost *ch *cost] [isall *costs *c [language *ch * * * *c]] [+ *cost -6 : *costs]]
 [[cultural_familiarities_cost *ch *cost] [isall *costs *c [cultural_familiarity *ch * *c]] [+ *cost 0 : *costs]]

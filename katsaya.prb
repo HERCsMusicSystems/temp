@@ -28,6 +28,9 @@
 ;[status 1 "Secret" 25]
 ;[status 2 "Nomad"]
 
+[reputation 2 "famous" allmost some]
+[reputation 2 "buly" most most]
+
 ]
 
 [exit]

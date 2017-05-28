@@ -1,5 +1,5 @@
 
-program character_views [chattr decor decormt decorpt view_language view_culture view_appearances view_status attrb lgdc]
+program character_views [chattr decor decormt decorpt view_language view_culture view_appearances view_status view_reputation attrb lgdc]
 
 [[chattr *res *ch *ATTR *attr *value]
 	[*attr *ch *value]
@@ -105,13 +105,15 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 		[*res "</table>"]
 		[*res "<br/>"]
 		[*res "<table width=100% style=\"border:2px solid;\" >"]
-		[appearance_cost *ch *appearance_cost] [status_cost *ch *status_cost] [+ *reaction_cost *appearance_cost *status_cost]
-		[*res "<tr><td align=center colspan=2>Reaction Modifiers</td><td width=10%>" [[*reaction_cost]] "</td></tr>"]
+		[appearance_cost *ch *appearance_cost] [status_cost *ch *status_cost] [reputation_cost *ch *reputation_cost]
+		[+ *reaction_cost *appearance_cost *status_cost *reputation_cost]
+		[*res "<tr><td></td><td align=center>Reaction Modifiers</td><td width=10%>" [[*reaction_cost]] "</td></tr>"]
 		[*res "<tr><td colspan=3>Appearance</td></tr>"]
 		[view_appearances *res *ch]
 		[*res "<tr><td colspan=3>Status</td></tr>"]
 		[view_status *res *ch]
 		[*res "<tr><td colspan=3>Reputation</td></tr>"]
+		[view_reputation *res *ch]
 		[*res "</table>"]
 	[*res "</td>"]
 	[*res "</tr>"]
@@ -145,10 +147,10 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 [[view_culture : *]]
 
 [[view_appearances *res *ch]
-	[appearance *ch *appearance *name *cost] [+ *appearance " (" *name ")" *description]
+	[appearance *ch *appearance *name *cost]
 	[ONE
-		[*res "<tr><td width=10%></td>"]
-		[lgdc *res *description]
+		[*res "<tr>"] [lgdc *res [*appearance]]
+		[lgdc *res *name]
 		[*res "<td>" [[*cost]] "</td>"]
 		[*res "</tr>"]
 	]
@@ -157,16 +159,28 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 [[view_appearances : *]]
 
 [[view_status *res *ch]
-	[status *ch *level *name *cost] [+ *level " (" *name ")" *description]
+	[status *ch *level *name *cost]
 	[ONE
-		[*res "<tr><td width=10%></td>"]
-		[lgdc *res *description]
+		[*res "<tr>"] [lgdc *res [*level]]
+		[lgdc *res *name]
 		[*res "<td>" [[*cost]] "</td>"]
 		[*res "</tr>"]
 	]
 	fail
 ]
 [[view_status : *]]
+
+[[view_reputation *res *ch]
+	[reputation *ch *reputation *name *group *frequency *cost] [+ *reputation " (" *name ")" *description]
+	[ONE
+		[*res "<tr>"] [lgdc *res [*reputation]]
+		[lgdc *res *name]
+		[*res "<td>" [[*cost]] "</td>"]
+		[*res "</tr>"]
+	]
+	fail
+]
+[[view_reputation : *]]
 ;[[view_culture *res *ch] [*res "<tr><td>Sputnik</td></tr>"]]
 
 

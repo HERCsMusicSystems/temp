@@ -73,6 +73,7 @@ program gurps ['' d build_character
 [[appearance *ch 0 Average 0] [isall *e *x [*ch appearance * *]] / [= *e []]]
 [[appearance_cost *ch *cost] [isall *costs *c [appearance *ch * * *c]] [+ *cost 0 : *costs] /]
 [[reputation *ch *reputation *name *group *frequency *cost] [*ch reputation *reputation *name *group *frequency] [reputations *reputation *group *frequency *cost]]
+[[reputation *ch *reputation *name *group *frequency *cost] [*ch reputation *reputation *name *group *frequency *cost]]
 [[reputation_cost *ch *cost] [isall *costs *c [reputation *ch * * * * *c]] [+ *cost 0 : *costs]]
 
 [[point_total *ch *pt]

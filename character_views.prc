@@ -4,7 +4,7 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 [[chattr *res *ch *ATTR *attr *value]
 	[*attr *ch *value]
 	[SELECT [[is_text *value] [= *value *v]] [[= *v [*value]]]]
-	[*res *ATTR " &nbsp;<u>&nbsp;&nbsp;<font face='comic sans ms' color=blue><i>" *v "</i></font>&nbsp;&nbsp;</u>&nbsp;&nbsp;&nbsp;"]
+	[*res *ATTR " &nbsp;<font face='comic sans ms' color=blue><i><u>&nbsp;&nbsp;" *v "&nbsp;&nbsp;&nbsp;</u></i></font>&nbsp;&nbsp;"]
 ]
 
 [[decor *res *attr] [is_number *attr] / [*res " <font face='comic sans ms' color=blue><u>&nbsp;&nbsp;<i>" [*attr] "</i>&nbsp;&nbsp;</u></font> "]]
@@ -20,10 +20,7 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 
 [[view_character *res *character]
 	[SELECT [[is_text *character] [text_term *character *ch] [= *module *character]] [[text_term *module *character] [= *character *ch]]]
-	;[delallcl *ch] [load *module]
-	[delallcl *ch]
-	;[SELECT [[+ *file_name *module ".prb"] [batch *file_name]] [[search_directories *p] [= *p [*pp]] [+ *file_name *pp *module ".prb"] [batch *file_name]]]
-	[+ *file_name *module ".prb"] [batch *file_name]
+	[delallcl *ch] [+ *file_name *module ".prb"] [batch *file_name]
 	[*res "<center><table>"]
 	[*res "<tr><td colspan=2>"]
 	[*res "<div style='float: left;'><img src=resources/gurps.png width=100% /><br/><font size=+1><b>CHARACTER SHEET</b></font></div>"]

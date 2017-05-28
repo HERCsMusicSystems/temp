@@ -1,4 +1,4 @@
-program gurps ['' d
+program gurps ['' d build_character
 				race name player appearance height weight age unspent_points size_modifier point_total
 				strength dexterity intelligence health hit_points current_hit_points will perception fatigue_points current_fatigue_points
 				strength_cost dexterity_cost intelligence_cost health_cost hit_points_cost will_cost perception_cost fatigue_points_cost
@@ -8,7 +8,12 @@ program gurps ['' d
 				tech_level campaign_tech_level tech_level_cost tech_levels
 				cultural_familiarity cultural_familiarities_cost
 				status status_cost
+				appearance appearance_cost appearances
+				Horrific Monstrous Hideous Ugly Unattractive Average Attractive Handsome Beautiful 'Very Handsome' 'Very Beautiful' Transcendent
 				]
+
+[[build_character *character *attribute : *attributes] [addcl [[*character : *attribute]]] / [build_character *character : *attributes]]
+[[build_character *character]]
 
 [[strength_cost *level *cost] [lazy [sum 10 *delta *level] [times *delta 10 *cost]]]
 [[health_cost *level *cost] [lazy [sum 10 *delta *level] [times *delta 10 *cost]]]
@@ -62,6 +67,10 @@ program gurps ['' d
 [[status *ch *status *name *cost] [*ch status *status *name] [~ 5 *status *cost]]
 [[status *ch *status *name *cost] [*ch status *status *name *cost]]
 [[status_cost *ch *cost] [isall *costs *c [status *ch *level *name *c]] [+ *cost 0 : *costs] /]
+[[appearance *ch *appearance *name *cost] [*ch appearance *appearance *name] [appearances *appearance *name *cost]]
+[[appearance *ch *appearance *name *cost] [*ch appearance *appearance *name *cost]]
+[[appearance *ch 0 Average 0] [isall *e *x [*ch appearance : *x]] / [= *e []]]
+[[appearance_cost *ch *cost] [isall *costs *c [appearance *ch * * *c]] [+ *cost 0 : *costs] /]
 
 [[point_total *ch *pt]
 	[strength_cost *ch * *strength]
@@ -77,9 +86,10 @@ program gurps ['' d
 	[tech_level_cost *ch * *tech_level]
 	[languages_cost *ch *languages]
 	[cultural_familiarities_cost *ch *cultural_familiarities]
+	[appearance_cost *ch *appearance]
 	[status_cost *ch *status]
 	[+ *pt *strength *dexterity *intelligence *health *hit_points *will *perception *fatigue_points *basic_speed *basic_move
-		*languages *tech_level *cultural_familiarities *status]
+		*languages *tech_level *cultural_familiarities *appearance *status]
 ]
 
 [[damage_table *st [1 d -6] [1 d -5]] [< *st 3] /]
@@ -162,6 +172,19 @@ program gurps ['' d
 [[tech_levels 10 "Robotic Age" "2070+?" 50000]]
 [[tech_levels 11 "Age of Exotic Matter" "?" 75000]]
 [[tech_levels * "Whatever the GM likes!" "?" 100000]]
+
+[[appearances -6 Horrific -24]]
+[[appearances -5 Monstrous -20]]
+[[appearances -4 Hideous -16]]
+[[appearances -2 Ugly -8]]
+[[appearances -1 Unattractive -4]]
+[[appearances 0 Average 0]]
+[[appearances 1 Attractive 4]]
+[[appearances [2 4] Handsome 12]]
+[[appearances [2 4] Beautiful 12]]
+[[appearances [2 6] 'Very Handsome' 16]]
+[[appearances [2 6] 'Very Beautiful' 16]]
+[[appearances [2 8] Transcendent 20]]
 
 [[languages_cost *ch *cost] [isall *costs *c [language *ch * * * *c]] [+ *cost -6 : *costs]]
 [[cultural_familiarities_cost *ch *cost] [isall *costs *c [cultural_familiarity *ch * *c]] [+ *cost 0 : *costs]]

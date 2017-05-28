@@ -1,5 +1,5 @@
 
-program character_views [chattr decor decormt decorpt view_language view_culture view_status attrb lgdc]
+program character_views [chattr decor decormt decorpt view_language view_culture view_appearances view_status attrb lgdc]
 
 [[chattr *res *ch *ATTR *attr *value]
 	[*attr *ch *value]
@@ -20,7 +20,10 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 
 [[view_character *res *character]
 	[SELECT [[is_text *character] [text_term *character *ch] [= *module *character]] [[text_term *module *character] [= *character *ch]]]
-	[delallcl *ch] [load *module]
+	;[delallcl *ch] [load *module]
+	[delallcl *ch]
+	;[SELECT [[+ *file_name *module ".prb"] [batch *file_name]] [[search_directories *p] [= *p [*pp]] [+ *file_name *pp *module ".prb"] [batch *file_name]]]
+	[+ *file_name *module ".prb"] [batch *file_name]
 	[*res "<center><table>"]
 	[*res "<tr><td colspan=2>"]
 	[*res "<div style='float: left;'><img src=resources/gurps.png width=100% /><br/><font size=+1><b>CHARACTER SHEET</b></font></div>"]
@@ -105,9 +108,10 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 		[*res "</table>"]
 		[*res "<br/>"]
 		[*res "<table width=100% style=\"border:2px solid;\" >"]
-		[status_cost *ch *status_cost]
-		[*res "<tr><td align=center colspan=2>Reaction Modifiers</td><td width=10%>" [[*status_cost]] "</td></tr>"]
+		[appearance_cost *ch *appearance_cost] [status_cost *ch *status_cost] [+ *reaction_cost *appearance_cost *status_cost]
+		[*res "<tr><td align=center colspan=2>Reaction Modifiers</td><td width=10%>" [[*reaction_cost]] "</td></tr>"]
 		[*res "<tr><td colspan=3>Appearance</td></tr>"]
+		[view_appearances *res *ch]
 		[*res "<tr><td colspan=3>Status</td></tr>"]
 		[view_status *res *ch]
 		[*res "<tr><td colspan=3>Reputation</td></tr>"]
@@ -142,6 +146,18 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 	fail
 ]
 [[view_culture : *]]
+
+[[view_appearances *res *ch]
+	[appearance *ch *appearance *name *cost] [+ *appearance " (" *name ")" *description]
+	[ONE
+		[*res "<tr><td width=10%></td>"]
+		[lgdc *res *description]
+		[*res "<td>" [[*cost]] "</td>"]
+		[*res "</tr>"]
+	]
+	fail
+]
+[[view_appearances : *]]
 
 [[view_status *res *ch]
 	[status *ch *level *name *cost] [+ *level " (" *name ")" *description]

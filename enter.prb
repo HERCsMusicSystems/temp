@@ -1,7 +1,8 @@
+#!/home/rama/bin/studio
 
 [import "character_viewer"]
 
-[daemon service 3008 router]
+[webserver service 3008 router]
 
 [command]
 

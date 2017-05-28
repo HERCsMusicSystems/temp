@@ -1,0 +1,34 @@
+
+[build_character katsaya
+
+[race human]
+[name "Katsaya"]
+[player "Robert"]
+[age "Early 40s"]
+[height "5'1''"]
+[weight "120 lbs"]
+[size_modifier 128]
+
+[dexterity 13]
+[intelligence 13]
+[health 12]
+
+[language "Cathan" native]
+[language "Lantrai" accented]
+[language "Shandassa" accented]
+
+[cultural_familiarity "Catho" 0]
+[cultural_familiarity "Lantra" 0]
+
+[appearance 0 "Flashing black eyes,<br/>dark curly hair." 0]
+;[appearance * 'Very Beautiful']
+;[appearance 1 *]
+
+[status 4 "Catho and Lantra"]
+;[status 1 "Secret" 25]
+;[status 2 "Nomad"]
+
+]
+
+[exit]
+

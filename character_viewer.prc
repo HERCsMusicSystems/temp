@@ -8,8 +8,8 @@ program character_viewer [router route controller_character_list controller_char
 
 [[controller_character_list *req *res]
 	[*res "HTTP/1.1 200 OK\n\n<body>\n"]
-	[*res "<h1><center>CHARACTERS</center></h1>"]
-	[*res "<div align=center>"] [view_character_link *res] [*res "</div>"]
+	[*res "<h1><div align=center><img src=/resources/gurps.png style='vertical-align:middle'/>CHARACTERS</div></h1>"]
+	[*res "<div align=center><div style='display: inline-block' align=left>"] [view_character_link *res] [*res "</div></div>"]
 	[*res "</body>"]
 ]
 
@@ -32,7 +32,7 @@ program character_viewer [router route controller_character_list controller_char
 [[route *req *res GET "index"] [controller_character_list *req *res]]
 [[route *req *res GET ''] [controller_character_list *req *res]]
 [[route *req *res GET character *character] [controller_character *req *res *character]]
-[[route *req *res GET character resources *file : *] [*res [] : *file]]
+[[route *req *res GET resources *file : *] [*res [] : *file]]
 [[route *req *res GET ""] [*res "HTTP/1.0 200 OK\n\n<body><h1>Prolog Webserver</h1></body>"]]
 [[route *req *res : *] [*res "HTTP/1.1 401 Not found\n\n"]]
 

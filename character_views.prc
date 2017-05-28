@@ -23,7 +23,7 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 	[delallcl *ch] [+ *file_name *module ".prb"] [batch *file_name]
 	[*res "<center><table>"]
 	[*res "<tr><td colspan=2>"]
-	[*res "<div style='float: left;'><img src=resources/gurps.png width=100% /><br/><font size=+1><b>CHARACTER SHEET</b></font></div>"]
+	[*res "<div style='float: left;'><img src=/resources/gurps.png width=100% /><br/><font size=+1><b>CHARACTER SHEET</b></font></div>"]
 	[*res "<div style='float: left;'>&nbsp;&nbsp;</div>"]
 	[*res "<div style='float: left;'>"]
 		[chattr *res *ch "Name" name *]

@@ -11,6 +11,7 @@ program gurps ['' d build_character
 				appearance appearance_cost appearances
 				Horrific Monstrous Hideous Ugly Unattractive Average Attractive Handsome Beautiful 'Very Handsome' 'Very Beautiful' Transcendent
 				reputation reputation_cost reputations all allmost most some
+				wealth wealths 'Dead Broke' Poor Struggling Comfortable Wealthy 'Very Wealthy' 'Filthy Rich' Multimillionaire
 				]
 
 [[build_character *character *attribute : *attributes] [addcl [[*character : *attribute]]] / [build_character *character : *attributes]]
@@ -75,6 +76,17 @@ program gurps ['' d build_character
 [[reputation *ch *reputation *name *group *frequency *cost] [*ch reputation *reputation *name *group *frequency] [reputations *reputation *group *frequency *cost]]
 [[reputation *ch *reputation *name *group *frequency *cost] [*ch reputation *reputation *name *group *frequency *cost]]
 [[reputation_cost *ch *cost] [isall *costs *c [reputation *ch * * * * *c]] [+ *cost 0 : *costs]]
+[[wealth *ch *wealth *multiplier *name *cost]
+	[*ch wealth *multiplier *name *cost]
+	[campaign_tech_level *ch *tl] [tech_levels *tl * * *start] [~ *wealth *multiplier *start]
+]
+[[wealth *ch *wealth *multiplier *name *cost]
+	[*ch wealth *w]
+	[SELECT [[= *w *multiplier]] [[= *w *name]] [[is_integer *w] [= *w *cost]]]
+	[wealths *multiplier *name *cost]
+	[campaign_tech_level *ch *tl] [tech_levels *tl * * *start] [~ *wealth *multiplier *start]
+]
+[[wealth *ch *wealth 1.0 Average 0] [campaign_tech_level *ch *tl] [tech_levels *tl * * *wealth]]
 
 [[point_total *ch *pt]
 	[strength_cost *ch * *strength]
@@ -93,8 +105,9 @@ program gurps ['' d build_character
 	[appearance_cost *ch *appearance]
 	[status_cost *ch *status]
 	[reputation_cost *ch *reputation]
+	[wealth *ch * * * *wealth]
 	[+ *pt *strength *dexterity *intelligence *health *hit_points *will *perception *fatigue_points *basic_speed *basic_move
-		*languages *tech_level *cultural_familiarities *appearance *status *reputation]
+		*languages *tech_level *cultural_familiarities *appearance *status *reputation *wealth]
 ]
 
 [[damage_table *st [1 d -6] [1 d -5]] [< *st 3] /]
@@ -177,6 +190,16 @@ program gurps ['' d build_character
 [[tech_levels 10 "Robotic Age" "2070+?" 50000]]
 [[tech_levels 11 "Age of Exotic Matter" "?" 75000]]
 [[tech_levels * "Whatever the GM likes!" "?" 100000]]
+
+[[wealths 0.0 'Dead Broke' -25]]
+[[wealths 0.2 Poor -15]]
+[[wealths 0.5 Struggling -10]]
+[[wealths 1.0 Average 0]]
+[[wealths 2.0 Comfortable 10]]
+[[wealths 5.0 Wealthy 20]]
+[[wealths 20.0 'Very Wealthy' 30]]
+[[wealths 100.0 'Filthy Rich' 50]]
+[[wealths *multiplier [Multimillionaire *level] *cost] [mac *level 25 50 *cost] [pow 10 *level *m] [~ *multiplier 100.0 *m]]
 
 [[appearances -6 Horrific -24]]
 [[appearances -5 Monstrous -20]]

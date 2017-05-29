@@ -32,6 +32,8 @@
 [reputation 2 "buly" most most]
 [reputation -7 "Heavy drinker" all all 100]
 
+[wealth 'Very Wealthy']
+
 ]
 
 [exit]

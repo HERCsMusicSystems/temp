@@ -28,11 +28,20 @@
 ;[status 1 "Secret" 25]
 ;[status 2 "Nomad"]
 
-[reputation 2 "famous" allmost some]
-[reputation 2 "buly" most most]
-[reputation -7 "Heavy drinker" all all 100]
+;[reputation 2 "famous" allmost some]
+;[reputation 2 "buly" most most]
+;[reputation -7 "Heavy drinker" all all 100]
 
 [wealth 'Very Wealthy']
+
+[skill "Dancing" Average dexterity -1]
+[skill "Fast-Draw (Knife)" Easy dexterity 1]
+[skill "Knife" Easy dexterity 1]
+[skill "Leadership" Average intelligence 2]
+[skill "Politics" Average intelligence 3]
+[skill "Savoir-Faire (Catho)" Easy intelligence 2]
+[skill "Savoir-Faire (Lantra)" Easy intelligence 0]
+[skill "Stealth" Average dexterity -1]
 
 ]
 

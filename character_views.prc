@@ -1,5 +1,6 @@
 
-program character_views [chattr decor decormt decorpt view_language view_culture view_appearances view_status view_reputation attrb lgdc]
+program character_views [chattr decor decormt decorpt view_language view_culture view_appearances view_status view_reputation
+						view_skills process_relative attrb lgdc]
 
 [[chattr *res *ch *ATTR *attr *value]
 	[*attr *ch *value]
@@ -120,6 +121,12 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 		[view_status *res *ch]
 		[*res "<tr><td colspan=3>Reputation</td></tr>"]
 		[view_reputation *res *ch]
+		[*res "</table><br/>"]
+		[skills_cost *ch *skills_cost]
+		[*res "<table width=100% style=\"border:2px solid;\" >"]
+		[*res "<tr><td align=center colspan=5>SKILLS</td></tr>"]
+		[*res "<tr><td colspan=2>Name</td><td>Level</td><td>Relative</span></td><td width=10%>" [[*skills_cost]] "</td></tr>"]
+		[view_skills *res *ch]
 		[*res "</table>"]
 	[*res "</td>"]
 	[*res "</tr>"]
@@ -187,8 +194,26 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 	fail
 ]
 [[view_reputation : *]]
-;[[view_culture *res *ch] [*res "<tr><td>Sputnik</td></tr>"]]
 
+[[view_skills *res *ch]
+	[skill *ch *name *difficulty *attribute *level *relative *cost] [process_relative *attribute *relative *description]
+	[ONE
+		[*res "<tr>"] [lgdc *res *name] [lgdc *res *difficulty] [lgdc *res [*level]] [lgdc *res *description]
+		[*res "<td>" [[*cost]] "</td>"]
+		[*res "</tr>"]
+	]
+	fail
+]
+[[view_skills : *]]
+
+[[process_relative *level *next] [< *level 0] / [+ "" *level *next]]
+[[process_relative *level *next] [+ "+" *level *next]]
+[[process_relative strength *level *desc] [process_relative *level *next] [+ "ST" *next *desc]]
+[[process_relative dexterity *level *desc] [process_relative *level *next] [+ "DX" *next *desc]]
+[[process_relative intelligence *level *desc] [process_relative *level *next] [+ "IQ" *next *desc]]
+[[process_relative health *level *desc] [process_relative *level *next] [+ "HT" *next *desc]]
+[[process_relative perception *level *desc] [process_relative *level *next] [+ "PER" *next *desc]]
+[[process_relative will *level *desc] [process_relative *level *next] [+ "WILL" *next *desc]]
 
 
 end .

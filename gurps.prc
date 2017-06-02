@@ -12,6 +12,7 @@ program gurps ['' d build_character
 				Horrific Monstrous Hideous Ugly Unattractive Average Attractive Handsome Beautiful 'Very Handsome' 'Very Beautiful' Transcendent
 				reputation reputation_cost reputations all allmost most some
 				wealth wealths 'Dead Broke' Poor Struggling Comfortable Wealthy 'Very Wealthy' 'Filthy Rich' Multimillionaire
+				skill skill_cost skills_cost Easy average Hard 'Very Hard'
 				]
 
 [[build_character *character *attribute : *attributes] [addcl [[*character : *attribute]]] / [build_character *character : *attributes]]
@@ -88,6 +89,22 @@ program gurps ['' d build_character
 ]
 [[wealth *ch *wealth 1.0 Average 0] [campaign_tech_level *ch *tl] [tech_levels *tl * * *wealth]]
 
+[[skill *ch *name *difficulty *attribute *level *relative *cost]
+	[*ch skill *name *difficulty *attribute *relative]
+	[ONE [*attribute *ch *attr]]
+	[skill_cost *difficulty *relative *attr *level *cost]
+]
+[[skill *ch *name *difficulty *attribute *level *relative *cost] [*ch skill *name *difficulty *attribute *level *relative *cost]]
+
+[[skill_cost Average *relative *attr *level *cost] [skill_cost *relative *cost] [+ *level *attr *relative]]
+[[skill_cost Easy *relative *attr *level *cost] [+ *relative -1 *r2] [skill_cost *r2 *cost] [+ *level *attr *relative]]
+[[skill_cost Hard *relative *attr *level *cost] [+ *relative 1 *r2] [skill_cost *r2 *cost] [+ *level *attr *relative]]
+[[skill_cost 'Very Hard' *relative *attr *level *cost] [+ *relative 2 *r2] [skill_cost *r2 *cost] [+ *level *attr *relative]]
+[[skill_cost -1 1] /]
+[[skill_cost 0 2] /]
+[[skill_cost *relative *cost] [times *relative 4 *cost] [< 0 *relative *cost]]
+[[skills_cost *ch *cost] [isall *costs *c [skill *ch * * * * * *c]] [+ *cost : *costs]]
+
 [[point_total *ch *pt]
 	[strength_cost *ch * *strength]
 	[dexterity_cost *ch * *dexterity]
@@ -106,8 +123,9 @@ program gurps ['' d build_character
 	[status_cost *ch *status]
 	[reputation_cost *ch *reputation]
 	[wealth *ch * * * *wealth]
+	[skills_cost *ch *skills]
 	[+ *pt *strength *dexterity *intelligence *health *hit_points *will *perception *fatigue_points *basic_speed *basic_move
-		*languages *tech_level *cultural_familiarities *appearance *status *reputation *wealth]
+		*languages *tech_level *cultural_familiarities *appearance *status *reputation *wealth *skills]
 ]
 
 [[damage_table *st [1 d -6] [1 d -5]] [< *st 3] /]

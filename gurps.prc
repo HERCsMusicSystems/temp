@@ -14,6 +14,7 @@ program gurps ['' d build_character
 				wealth wealths 'Dead Broke' Poor Struggling Comfortable Wealthy 'Very Wealthy' 'Filthy Rich' Multimillionaire
 				skill skill_cost skills_cost Easy average Hard 'Very Hard'
 				advantage advantages_cost disadvantage disadvantages_cost
+				armour
 				weapon weapon_table weapon_mod parry_mod wp_mod aff burn cor cr cut fat imp pi- pi pi+ pi++ spec tox C $ No 'No skill'
 					Knife 'Large Knife' 'Small Knife'
 				]
@@ -279,6 +280,8 @@ program gurps ['' d build_character
 
 [[weapon_table *ch *thr *sw 'Large Knife' 0 *damage [[C 1] [C]] *parry 40 1 6 "Throwable"] [wp_mod [[*sw -2 cut] [*thr 0 imp]] *damage *ch Knife -1 *parry]]
 [[weapon_table *ch *thr *sw 'Small Knife' 0 *damage [[C 1] [C]] *parry 30 0.5 5 "Throwable"] [wp_mod [[*sw -3 cut] [*thr -1 imp]] *damage *ch Knife -1 *parry]]
+
+[[armour *ch *armour *tl *location *dr *cost *weight *note] [*ch armour *armour *tl *location *dr *cost *weight *note]]
 
 end .
 

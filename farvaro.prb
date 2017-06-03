@@ -35,6 +35,8 @@
 
 [weapon 'Large Knife']
 
+[armour "Light Leather" 1 [neck torso groin arms legs] 1 50 10 "Concealable"]
+
 ]
 
 [exit]

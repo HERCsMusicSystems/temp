@@ -1,6 +1,6 @@
 
 program character_views [chattr decor decormt decorpt view_language view_culture view_appearances view_status view_reputation
-						view_skills process_relative attrb lgdc]
+						view_skills process_relative view_advantages attrb lgdc]
 
 [[chattr *res *ch *ATTR *attr *value]
 	[*attr *ch *value]
@@ -89,6 +89,16 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 		[*res "<tr><td>X-Heavy (4) = 10 x BL</td>"] [decormt *res *basic_lift 10.0]
 			[*res "<td>BM x 0.2</td>"] [decormt *res *basic_move 0.2]
 			[*res "<td>Dodge - 4</td>"] [decorpt *res *basic_speed -1] [*res "</tr>"]
+		[*res "</table><br/>"]
+		[advantages_cost *ch *advantages_cost]
+		[*res "<table width=100% style=\"border:2px solid;\">"]
+		[*res "<tr><td align=center>ADVANTAGES AND PERKS</td><td width=10%>" [[*advantages_cost]] "</td></tr>"]
+		[view_advantages advantage *res *ch]
+		[*res "</table><br/>"]
+		[disadvantages_cost *ch *disadvantages_cost]
+		[*res "<table width=100% style=\"border:2px solid;\">"]
+		[*res "<tr><td align=center>DISADVANTAGES AND QUIRKS</td><td width=10%>" [[*disadvantages_cost]] "</td></tr>"]
+		[view_advantages disadvantage *res *ch]
 		[*res "</table>"]
 	[*res "</td>"]
 	[tech_level_cost *ch *tech_level *tech_level_cost] [tech_levels *tech_level *tldescription *tldate *start_wealth]
@@ -205,6 +215,13 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 	fail
 ]
 [[view_skills : *]]
+
+[[view_advantages *advantage *res *ch]
+	[*advantage *ch *description *cost]
+	[ONE [*res "<tr>"] [lgdc *res *description] [*res "<td>" [[*cost]] "</td></tr>"]]
+	fail
+]
+[[view_advantages : *]]
 
 [[process_relative *level *next] [< *level 0] / [+ "" *level *next]]
 [[process_relative *level *next] [+ "+" *level *next]]

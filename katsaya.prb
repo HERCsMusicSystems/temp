@@ -43,6 +43,17 @@
 [skill "Savoir-Faire (Lantra)" Easy intelligence 0]
 [skill "Stealth" Average dexterity -1]
 
+[disadvantage "Bad Temper (12)" -10]
+[disadvantage "Bully (12)" -10]
+[disadvantage "Jealousy" -10]
+[disadvantage "Stubbornness" -5]
+
+[disadvantage "Angry about aging and lost beauty" -1]
+[disadvantage "Dislikes Lantara" -1]
+[disadvantage "Loyal to Catho when it suits her interest" -1]
+[disadvantage "Resents being married to non-hereditary noble" -1]
+[disadvantage "Stingy and generous by turns, unpredictably." -1]
+
 ]
 
 [exit]

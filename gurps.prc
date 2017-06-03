@@ -13,6 +13,7 @@ program gurps ['' d build_character
 				reputation reputation_cost reputations all allmost most some
 				wealth wealths 'Dead Broke' Poor Struggling Comfortable Wealthy 'Very Wealthy' 'Filthy Rich' Multimillionaire
 				skill skill_cost skills_cost Easy average Hard 'Very Hard'
+				advantage advantages_cost disadvantage disadvantages_cost
 				]
 
 [[build_character *character *attribute : *attributes] [addcl [[*character : *attribute]]] / [build_character *character : *attributes]]
@@ -105,6 +106,11 @@ program gurps ['' d build_character
 [[skill_cost *relative *cost] [times *relative 4 *cost] [< 0 *relative *cost]]
 [[skills_cost *ch *cost] [isall *costs *c [skill *ch * * * * * *c]] [+ *cost : *costs]]
 
+[[advantage *ch *description *cost] [*ch advantage *description *cost]]
+[[advantages_cost *ch *cost] [isall *costs *c [advantage *ch * *c]] [+ *cost : *costs]]
+[[disadvantage *ch *description *cost] [*ch disadvantage *description *cost]]
+[[disadvantages_cost *ch *cost] [isall *costs *c [disadvantage *ch * *c]] [+ *cost : *costs]]
+
 [[point_total *ch *pt]
 	[strength_cost *ch * *strength]
 	[dexterity_cost *ch * *dexterity]
@@ -124,8 +130,10 @@ program gurps ['' d build_character
 	[reputation_cost *ch *reputation]
 	[wealth *ch * * * *wealth]
 	[skills_cost *ch *skills]
+	[advantages_cost *ch *advantages]
+	[disadvantages_cost *ch *disadvantages]
 	[+ *pt *strength *dexterity *intelligence *health *hit_points *will *perception *fatigue_points *basic_speed *basic_move
-		*languages *tech_level *cultural_familiarities *appearance *status *reputation *wealth *skills]
+		*languages *tech_level *cultural_familiarities *appearance *status *reputation *wealth *skills *advantages *disadvantages]
 ]
 
 [[damage_table *st [1 d -6] [1 d -5]] [< *st 3] /]

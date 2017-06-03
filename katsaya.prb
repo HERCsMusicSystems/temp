@@ -1,13 +1,11 @@
 
 [build_character katsaya
 
-[race human]
 [name "Katsaya"]
 [player "Robert"]
 [age "Early 40s"]
 [height "5'1''"]
 [weight "120 lbs"]
-[size_modifier 128]
 
 [dexterity 13]
 [intelligence 13]
@@ -28,7 +26,7 @@
 
 [skill "Dancing" Average dexterity -1]
 [skill "Fast-Draw (Knife)" Easy dexterity 1]
-[skill "Knife" Easy dexterity 1]
+[skill Knife Easy dexterity 1]
 [skill "Leadership" Average intelligence 2]
 [skill "Politics" Average intelligence 3]
 [skill "Savoir-Faire (Catho)" Easy intelligence 2]

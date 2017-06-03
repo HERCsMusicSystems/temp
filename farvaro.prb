@@ -1,0 +1,44 @@
+
+[build_character farvaro
+
+[name "Farvaro"]
+[player "Robert"]
+[age "Early 40s"]
+[height "5'7''"]
+[weight "160 lbs"]
+[appearance "Pasty skin, wispy brown hair, brown eyes."]
+
+[dexterity 11] [intelligence 13]
+
+[language "Ayuni Trade Pidgin-Broken" native native 0]
+[language "Lantrai" native]
+[language "Shandassa" accented]
+[language "Nomic" accented]
+
+[skill "Administration" Average intelligence 0]
+[skill "Camel Riding" Average dexterity 0]
+[skill "Diplomacy" Hard intelligence 1]
+[skill "Gambling" Average intelligence 1]
+[skill "Horse Riding" Average dexterity 0]
+[skill Knife Easy dexterity 0]
+[skill "Merchant" Average intelligence 4]
+[skill "Sleight of Hand" Hard dexterity 1]
+
+[disadvantage "Laziness" -10]
+[disadvantage "Bully (mental only, but that's bad enough)" -10]
+[disadvantage "Cowardice" -10]
+[disadvantage "Dislikes roughing it" -1]
+[disadvantage "Hums tunelessly" -1]
+[disadvantage "Ignores those \"beneath him\"" -1]
+[disadvantage "Enjoys gambling, strange forfeits and sucker bets" -1]
+[disadvantage "Thinks he's a good navigator (he's not)." -1]
+
+[weapon 'Large Knife']
+
+]
+
+[exit]
+
+Wears light leather (DR 1).
+
+

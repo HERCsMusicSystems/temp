@@ -21,16 +21,8 @@
 [cultural_familiarity "Lantra" 0]
 
 [appearance "Flashing black eyes, dark curly hair."]
-;[appearance * 'Very Beautiful']
-;[appearance 1 *]
 
 [status 4 "Catho and Lantra"]
-;[status 1 "Secret" 25]
-;[status 2 "Nomad"]
-
-;[reputation 2 "famous" allmost some]
-;[reputation 2 "buly" most most]
-;[reputation -7 "Heavy drinker" all all 100]
 
 [wealth 'Very Wealthy']
 
@@ -53,6 +45,8 @@
 [disadvantage "Loyal to Catho when it suits her interest" -1]
 [disadvantage "Resents being married to non-hereditary noble" -1]
 [disadvantage "Stingy and generous by turns, unpredictably." -1]
+
+[weapon 'Small Knife']
 
 ]
 

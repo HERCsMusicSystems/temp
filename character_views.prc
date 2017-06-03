@@ -1,6 +1,8 @@
 
 program character_views [chattr decor decormt decorpt view_language view_culture view_appearances view_status view_reputation
-						view_skills process_relative view_advantages attrb lgdc]
+						view_skills process_relative view_advantages attrb lgdc
+						view_hand_weapons
+						]
 
 [[chattr *res *ch *ATTR *attr *value]
 	[*attr *ch *value]
@@ -90,16 +92,6 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 			[*res "<td>BM x 0.2</td>"] [decormt *res *basic_move 0.2]
 			[*res "<td>Dodge - 4</td>"] [decorpt *res *basic_speed -1] [*res "</tr>"]
 		[*res "</table><br/>"]
-		[advantages_cost *ch *advantages_cost]
-		[*res "<table width=100% style=\"border:2px solid;\">"]
-		[*res "<tr><td align=center>ADVANTAGES AND PERKS</td><td width=10%>" [[*advantages_cost]] "</td></tr>"]
-		[view_advantages advantage *res *ch]
-		[*res "</table><br/>"]
-		[disadvantages_cost *ch *disadvantages_cost]
-		[*res "<table width=100% style=\"border:2px solid;\">"]
-		[*res "<tr><td align=center>DISADVANTAGES AND QUIRKS</td><td width=10%>" [[*disadvantages_cost]] "</td></tr>"]
-		[view_advantages disadvantage *res *ch]
-		[*res "</table>"]
 	[*res "</td>"]
 	[tech_level_cost *ch *tech_level *tech_level_cost] [tech_levels *tech_level *tldescription *tldate *start_wealth]
 	[wealth *ch *wealth *wealth_m *wealth_n *wealth_cost]
@@ -132,14 +124,34 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 		[*res "<tr><td colspan=3>Reputation</td></tr>"]
 		[view_reputation *res *ch]
 		[*res "</table><br/>"]
+	[*res "</td>"]
+	[*res "</tr>"]
+	[*res "<tr><td>"]
+		[advantages_cost *ch *advantages_cost]
+		[*res "<table width=100% style=\"border:2px solid;\">"]
+		[*res "<tr><td align=center>ADVANTAGES AND PERKS</td><td width=10%>" [[*advantages_cost]] "</td></tr>"]
+		[view_advantages advantage *res *ch]
+		[*res "</table><br/>"]
+		[disadvantages_cost *ch *disadvantages_cost]
+		[*res "<table width=100% style=\"border:2px solid;\">"]
+		[*res "<tr><td align=center>DISADVANTAGES AND QUIRKS</td><td width=10%>" [[*disadvantages_cost]] "</td></tr>"]
+		[view_advantages disadvantage *res *ch]
+		[*res "</table>"]
+	[*res "</td><td valign=top>"]
 		[skills_cost *ch *skills_cost]
 		[*res "<table width=100% style=\"border:2px solid;\" >"]
 		[*res "<tr><td align=center colspan=5>SKILLS</td></tr>"]
 		[*res "<tr><td colspan=2>Name</td><td>Level</td><td>Relative</span></td><td width=10%>" [[*skills_cost]] "</td></tr>"]
 		[view_skills *res *ch]
 		[*res "</table>"]
-	[*res "</td>"]
-	[*res "</tr>"]
+	[*res "</td></tr>"]
+	[*res "<tr><td colspan=2><br/>"]
+		[*res "<table width=100% style=\"border:2px solid;\" >"]
+		[*res "<tr><td>HAND WEAPONS</td></tr>"]
+		[*res "<tr><td>Weapon</td><td>Damage</td><td>Reach</td><td>Parry</td><td>Notes</td><td>Weight</td><td>Cost</td></tr>"]
+		[view_hand_weapons *res *ch]
+		[*res "</table>"]
+	[*res "</td></tr>"]
 	[*res "</table></center>"]
 ]
 
@@ -216,13 +228,6 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 ]
 [[view_skills : *]]
 
-[[view_advantages *advantage *res *ch]
-	[*advantage *ch *description *cost]
-	[ONE [*res "<tr>"] [lgdc *res *description] [*res "<td>" [[*cost]] "</td></tr>"]]
-	fail
-]
-[[view_advantages : *]]
-
 [[process_relative *level *next] [< *level 0] / [+ "" *level *next]]
 [[process_relative *level *next] [+ "+" *level *next]]
 [[process_relative strength *level *desc] [process_relative *level *next] [+ "ST" *next *desc]]
@@ -232,6 +237,20 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 [[process_relative perception *level *desc] [process_relative *level *next] [+ "PER" *next *desc]]
 [[process_relative will *level *desc] [process_relative *level *next] [+ "WILL" *next *desc]]
 
+[[view_advantages *advantage *res *ch]
+	[*advantage *ch *description *cost]
+	[ONE [*res "<tr>"] [lgdc *res *description] [*res "<td>" [[*cost]] "</td></tr>"]]
+	fail
+]
+[[view_advantages : *]]
+
+[[view_hand_weapons *res *ch]
+	[weapon *ch *weapon *tl *damage *reach *parry *cost *weight *st *notes]
+	[ONE [*res "<tr>"] [lgdc *res *weapon] [lgdc *res *damage] [lgdc *res *reach] [lgdc *res [*parry]]
+		[lgdc *res *notes] [lgdc *res [*weight]] [lgdc *res [$ *cost]][*res "</tr>"]]
+	fail
+]
+[[view_hand_weapons : *]]
 
 end .
 

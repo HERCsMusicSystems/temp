@@ -2,6 +2,7 @@
 import studio
 import http
 import gurps
+import weapons_and_armour
 import characters
 
 program character_viewer [router route controller_character_list controller_character view_character_link view_character resources]

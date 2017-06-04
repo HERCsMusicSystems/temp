@@ -2,7 +2,6 @@
 [build_character farvaro
 
 [name "Farvaro"]
-[player "Robert"]
 [age "Early 40s"]
 [height "5'7''"]
 [weight "160 lbs"]
@@ -10,7 +9,7 @@
 
 [dexterity 11] [intelligence 13]
 
-[language "Ayuni Trade Pidgin-Broken" native native 0]
+[language "Ayuni Trade Pidgin-Broken" broken broken 0]
 [language "Lantrai" native]
 [language "Shandassa" accented]
 [language "Nomic" accented]

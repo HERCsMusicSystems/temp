@@ -1,5 +1,5 @@
 program gurps ['' d build_character
-				race name player appearance height weight age unspent_points size_modifier point_total
+				race name player PC NPC height weight age unspent_points size_modifier point_total
 				strength dexterity intelligence health hit_points current_hit_points will perception fatigue_points current_fatigue_points
 				strength_cost dexterity_cost intelligence_cost health_cost hit_points_cost will_cost perception_cost fatigue_points_cost
 				damage damage_table basic_lift basic_lift_table
@@ -14,9 +14,6 @@ program gurps ['' d build_character
 				wealth wealths 'Dead Broke' Poor Struggling Comfortable Wealthy 'Very Wealthy' 'Filthy Rich' Multimillionaire
 				skill skill_cost skills_cost Easy average Hard 'Very Hard'
 				advantage advantages_cost disadvantage disadvantages_cost
-				armour
-				weapon weapon_table weapon_mod parry_mod wp_mod aff burn cor cr cut fat imp pi- pi pi+ pi++ spec tox C $ No 'No skill'
-					Knife 'Large Knife' 'Small Knife'
 				]
 
 [[build_character *character *attribute : *attributes] [addcl [[*character : *attribute]]] / [build_character *character : *attributes]]
@@ -41,7 +38,7 @@ program gurps ['' d build_character
 [[tech_level_cost *ch *level *cost] [lazy [tech_level *ch *level] [campaign_tech_level *ch *ctl] [sum *ctl *delta *level] [~ 5 *delta *cost]]]
 
 [[name *ch *name] [*ch name *name]] [[name * '']]
-[[player *ch *player] [*ch player *player]] [[player * '']]
+[[player *ch *player] [*ch player *player]] [[player * NPC]]
 [[age *ch *age] [*ch age *age]] [[age * '']]
 [[height *ch *ht] [*ch height *ht]] [[height * '']]
 [[weight *ch *wt] [*ch weight *wt]] [[weight * '']]
@@ -259,29 +256,6 @@ program gurps ['' d build_character
 [[language *ch *language *spoken *written *cost] [*ch language *language *spoken *written *cost]]
 
 [[cultural_familiarity *ch *culture *cost] [*ch cultural_familiarity *culture *cost]]
-
-[[weapon *ch *weapon *tl *damage *reach *parry *cost *weight *st *notes] [*ch weapon *weapon *tl *damage *reach *parry *cost *weight *st *notes]]
-[[weapon *ch *weapon *tl *damage *reach *parry *cost *weight *st *notes]
-	[*ch weapon *weapon] [ONE [damage *ch *thr *sw]]
-	[weapon_table *ch *thr *sw *weapon *tl *damage *reach *parry *cost *weight *st *notes]
-]
-
-[[weapon_mod [] []]]
-[[weapon_mod [[[*d d *s] *mod *type] : *mods] [[*d d *sm *type] : *res]] [+ *s *mod *sm] / [weapon_mod *mods *res]]
-
-[[parry_mod *ch *weapon *shift [*parry [+ *shift]]]
-	[skill *ch *weapon * * *level : *] /
-	[mac *level 0.5 3.0 *ret]
-	[trunc *ret *tr]
-	[+ *tr *shift *parry]
-]
-[[parry_mod *ch *weapon *shift ['No skill' [+ *shift]]]]
-[[wp_mod *mod *damage *ch *weapon *shift *parry] [weapon_mod *mod *damage] [parry_mod *ch *weapon *shift *parry]]
-
-[[weapon_table *ch *thr *sw 'Large Knife' 0 *damage [[C 1] [C]] *parry 40 1 6 "Throwable"] [wp_mod [[*sw -2 cut] [*thr 0 imp]] *damage *ch Knife -1 *parry]]
-[[weapon_table *ch *thr *sw 'Small Knife' 0 *damage [[C 1] [C]] *parry 30 0.5 5 "Throwable"] [wp_mod [[*sw -3 cut] [*thr -1 imp]] *damage *ch Knife -1 *parry]]
-
-[[armour *ch *armour *tl *location *dr *cost *weight *note] [*ch armour *armour *tl *location *dr *cost *weight *note]]
 
 end .
 

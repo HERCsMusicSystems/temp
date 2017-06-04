@@ -1,0 +1,48 @@
+
+[build_character tsorvano
+
+[name "Tsorvano"]
+[age "Early 40s"]
+[height "6'4''"]
+[weight "220 lbs"]
+[appearance "Swarthy, bald, hooked nose, brilliant green eyes"]
+
+[strength 13] [dexterity 14] [intelligence 13] [health 12]
+
+[wealth Wealthy]
+
+[advantage "Damage Resistance DR 1 (Tough Skin, -40%)" 3]
+
+[disadvantage "Miserly (12)" -10]
+[disadvantage "Sense of Duty (Halmaro and Guild)" -10]
+[disadvantage "Stubborn" -5]
+[disadvantage "Dotes on Halmaro's daughters" -1]
+[disadvantage "Dislikes clerics, will always wear the minimum for comfort and propritey" -1]
+[disadvantage "Enjoys embarrasing his inferiors" -1]
+[disadvantage "Likes open spaces" -1]
+[disadvantage "Very cold to strangers" -1]
+
+[skill Broadsword Average dexterity 2]
+[skill "Desert Survival" Average perception 3]
+[skill "Fast Draw (Two-Handed Sword)" Easy dexterity 0]
+[skill "Fast Draw (Knife)" Easy dexterity 0]
+[skill "Fast-Talk" Average intelligence 2]
+[skill Knife Easy dexterity 3]
+[skill "Kalba (musical instrument)" Hard intelligence 1]
+[skill "Merchant" Average intelligence 3]
+[skill "Mountain Survival" Average perception 2]
+[skill 'Two-Handed Sword' Average dexterity 3]
+
+[language "Lantrai" native]
+[language "Shandassa" native]
+[language "Nomic" native]
+[language "Ayuni Trade Pidgin" broken broken 0]
+
+[weapon Broadsword]
+[weapon Greatsword]
+[weapon 'Large Knife']
+
+]
+
+[exit]
+

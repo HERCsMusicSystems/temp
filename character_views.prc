@@ -1,7 +1,7 @@
 
 program character_views [chattr decor decormt decorpt view_language view_culture view_appearances view_status view_reputation
 						view_skills process_relative view_advantages attrb lgdc
-						view_hand_weapons view_armour
+						view_hand_weapons view_ranged_weapons view_armour
 						]
 
 [[chattr *res *ch *ATTR *attr *value]
@@ -152,6 +152,12 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 		[view_hand_weapons *res *ch]
 		[*res "</table><br/>"]
 		[*res "<table width=100% style=\"border:2px solid;\" >"]
+		[*res "<tr><td>RANGES WEAPONS</td></tr>"]
+		[*res "<tr><td>Weapon</td><td>Damage</td><td>Acc</td><td>Range</td><td>RoF</td><td>Shots</td><td>ST</td><Bulk</td>"]
+			[*res "<td>Rcl</td><td>LC</td><td>Notes</td><td>Cost</td><td>Weight</td></tr>"]
+		[view_ranged_weapons *res *ch]
+		[*res "</table><br/>"]
+		[*res "<table width=100% style=\"border:2px solid;\" >"]
 		[*res "<tr><td>ARMOUR & POSSESSIONS</td></tr>"]
 		[*res "<tr><td>Item</td><td>Location</td><td>Notes</td><td>Cost</td><td>Weight</td></tr>"]
 		[view_armour *res *ch]
@@ -256,6 +262,14 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 	fail
 ]
 [[view_hand_weapons : *]]
+
+[[view_ranged_weapons *res *ch]
+	[weapon *ch *weapon *tl *damage *acc *range *weight *rof *shots *cost *st *bulk *notes]
+	[ONE [*res "<tr>"] [lgdc *res *weapon] [lgdc *res *damage] [lgdc *res [*acc]] [lgdc *res [*range]] [lgdc *res [*rof]] [lgdc *res [*shots]]
+		[lgdc *res [*st]] [*res "</tr>"]]
+	fail
+]
+[[view_ranged_weapons : *]]
 
 [[view_armour *res *ch]
 	[armour *ch *armour *tl *location *dr *cost *weight *note]

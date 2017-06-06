@@ -1,0 +1,11 @@
+[build_character fighter-1
+[name "Fighter 1"]
+[language "Lantrai"]
+[strength 13] [dexterity 12] [intelligence 9]
+[skill Broadsword Average dexterity 4]
+[skill Knife Easy dexterity 0]
+[weapon Broadsword]
+[weapon 'Large Knife']
+]
+[exit]
+

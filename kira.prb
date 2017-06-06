@@ -1,0 +1,41 @@
+[build_character kira
+[name "Kira"]
+[age "18 years old"]
+[appearance "Red hair, brown eyes"]
+[height "5'6''"]
+[weight "125 lbs."]
+
+[dexterity 13] [intelligence 9] [health 12]
+
+[language "Lantrai" native]
+[language "Shandassa" accented]
+
+[status 3 "Members of own culture"]
+
+[advantage "Beautiful (+2/+4 reactions)" 16]
+[advantage "Charisma (+1 reactions)" 5]
+[disadvantage "Bad temper (9)" -15]
+[disadvantage "Impulsiveness (9)" -15]
+[disadvantage "Jealousy" -10]
+[disadvantage "Stubborness" -5]
+[disadvantage "Arrogant" -1]
+[disadvantage "Conceited" -1]
+[disadvantage "\"Female fighter\" self image" -1]
+[disadvantage "Likes jewellery" -1]
+[disadvantage "Selfish" -1]
+
+[skill Broadsword Average dexterity 1]
+[skill Knife Easy dexterity 1]
+[skill "Horse Riding" Average dexterity 1]
+[skill Shield Average dexterity 2]
+[skill "Dancing" Average dexterity 0]
+[skill "Sex Appeal" Average health 2]
+[skill "Savoir Faire (Lantara)" Easy intelligence 2]
+[skill "Singing" Easy health 0]
+
+[weapon Broadsword]
+[weapon 'Small Knife']
+
+]
+[exit]
+

@@ -5,6 +5,10 @@ program characters #auto
 [[character farvaro]]
 [[character tsorvano]]
 [[character halmaro]]
+[[character kira]]
+[[character fighter-1]]
+[[character fighter-2]]
+[[character fighter-3]]
 
 end .
 

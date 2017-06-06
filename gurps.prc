@@ -250,7 +250,12 @@ program gurps ['' d build_character
 [[cultural_familiarities_cost *ch *cost] [isall *costs *c [cultural_familiarity *ch * *c]] [+ *cost 0 : *costs]]
 
 [[language *ch *language *spoken *written *cost]
-	[*ch language *language : *languages] [SELECT [[= *languages [*spoken *written]]] [[= *languages [*spoken]] [= *languages [*written]]]]
+	[*ch language *language : *languages]
+	[SELECT
+		[[= *languages []] [= *spoken native] [= *written native]]
+		[[= *languages [*spoken *written]]]
+		[[= *languages [*spoken]] [= *languages [*written]]]
+	]
 	[language_cost *spoken *sc] [language_cost *written *wc] [+ *cost *sc *wc]
 ]
 [[language *ch *language *spoken *written *cost] [*ch language *language *spoken *written *cost]]

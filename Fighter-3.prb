@@ -1,5 +1,4 @@
-[build_character fighter-3
-[name "Fighter 3"]
+[build_character Fighter-3
 [language "Lantrai"]
 [strength 12] [dexterity 12]
 [skill Bow Average dexterity 3]

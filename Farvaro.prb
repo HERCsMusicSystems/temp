@@ -1,7 +1,6 @@
 
-[build_character farvaro
+[build_character Farvaro
 
-[name "Farvaro"]
 [age "Early 40s"]
 [height "5'7''"]
 [weight "160 lbs"]
@@ -10,18 +9,18 @@
 [dexterity 11] [intelligence 13]
 
 [language "Ayuni Trade Pidgin-Broken" broken broken 0]
-[language "Lantrai" native]
+[language "Lantrai"]
 [language "Shandassa" accented]
 [language "Nomic" accented]
 
-[skill "Administration" Average intelligence 0]
-[skill "Camel Riding" Average dexterity 0]
-[skill "Diplomacy" Hard intelligence 1]
-[skill "Gambling" Average intelligence 1]
-[skill "Horse Riding" Average dexterity 0]
-[skill Knife Easy dexterity 0]
-[skill "Merchant" Average intelligence 4]
-[skill "Sleight of Hand" Hard dexterity 1]
+[skill Administration 0]
+[skill 'Camel Riding' 0]
+[skill Diplomacy 1]
+[skill Gambling 1]
+[skill 'Horse Riding' 0]
+[skill Knife 0]
+[skill Merchant 4]
+[skill 'Sleight of Hand' 1]
 
 [disadvantage "Laziness" -10]
 [disadvantage "Bully (mental only, but that's bad enough)" -10]

@@ -1,5 +1,4 @@
-[build_character fighter-2
-[name "Fighter 2"]
+[build_character Fighter-2
 [language "Lantrai"]
 [strength 13] [dexterity 12] [intelligence 9] [health 11]
 [skill Broadsword Average dexterity 3]

@@ -9,6 +9,10 @@ program characters #auto
 [[character fighter-1]]
 [[character fighter-2]]
 [[character fighter-3]]
+[[character Karhan]]
+[[character Tekoff]]
+[[character lion]]
+[[character Riana]]
 
 end .
 

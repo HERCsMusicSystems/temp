@@ -1,6 +1,9 @@
+
+import gurps_skills
+
 program gurps ['' d build_character
 				race name player PC NPC height weight age unspent_points size_modifier point_total
-				strength dexterity intelligence health hit_points current_hit_points will perception fatigue_points current_fatigue_points
+				hit_points current_hit_points fatigue_points current_fatigue_points
 				strength_cost dexterity_cost intelligence_cost health_cost hit_points_cost will_cost perception_cost fatigue_points_cost
 				damage damage_table basic_lift basic_lift_table
 				basic_speed basic_speed_formulae basic_speed_cost basic_move basic_move_formulae basic_move_cost
@@ -9,10 +12,10 @@ program gurps ['' d build_character
 				cultural_familiarity cultural_familiarities_cost
 				status status_cost
 				appearance appearance_cost appearances
-				Horrific Monstrous Hideous Ugly Unattractive Average Attractive Handsome Beautiful 'Very Handsome' 'Very Beautiful' Transcendent
+				Horrific Monstrous Hideous Ugly Unattractive Attractive Handsome Beautiful 'Very Handsome' 'Very Beautiful' Transcendent
 				reputation reputation_cost reputations all allmost most some
 				wealth wealths 'Dead Broke' Poor Struggling Comfortable Wealthy 'Very Wealthy' 'Filthy Rich' Multimillionaire
-				skill skill_cost skills_cost Easy average Hard 'Very Hard'
+				skill skill_cost skills_cost
 				advantage advantages_cost disadvantage disadvantages_cost
 				]
 
@@ -37,7 +40,7 @@ program gurps ['' d build_character
 [[basic_move_cost *ch *level *cost] [lazy [basic_move_formulae *ch *formulae] [basic_move *ch *level] [sum *formulae *delta *level] [~ *cost 5 *delta]]]
 [[tech_level_cost *ch *level *cost] [lazy [tech_level *ch *level] [campaign_tech_level *ch *ctl] [sum *ctl *delta *level] [~ 5 *delta *cost]]]
 
-[[name *ch *name] [*ch name *name]] [[name * '']]
+[[name *ch *name] [*ch name *name]] [[name *name *name]]
 [[player *ch *player] [*ch player *player]] [[player * NPC]]
 [[age *ch *age] [*ch age *age]] [[age * '']]
 [[height *ch *ht] [*ch height *ht]] [[height * '']]
@@ -91,7 +94,10 @@ program gurps ['' d build_character
 [[wealth *ch *wealth 1.0 Average 0] [campaign_tech_level *ch *tl] [tech_levels *tl * * *wealth]]
 
 [[skill *ch *name *difficulty *attribute *level *relative *cost]
-	[*ch skill *name *difficulty *attribute *relative]
+	[SELECT
+		[[*ch skill *name *relative] [skills *name *difficulty *attribute]]
+		[[*ch skill *name *difficulty *attribute *relative]]
+	]
 	[ONE [*attribute *ch *attr]]
 	[skill_cost *difficulty *relative *attr *level *cost]
 ]

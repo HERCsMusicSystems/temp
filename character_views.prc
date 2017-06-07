@@ -148,7 +148,7 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 	[*res "<tr><td colspan=2><br/>"]
 		[*res "<table width=100% style=\"border:2px solid;\" >"]
 		[*res "<tr><td>HAND WEAPONS</td></tr>"]
-		[*res "<tr><td>Weapon</td><td>Damage</td><td>Reach</td><td>Parry</td><td>Notes</td><td>Cost</td><td>Weight</td></tr>"]
+		[*res "<tr><td>Weapon</td><td>Damage</td><td>Reach</td><td>Parry</td><td>LC</td><td>Notes</td><td>Cost</td><td>Weight</td></tr>"]
 		[view_hand_weapons *res *ch]
 		[*res "</table><br/>"]
 		[*res "<table width=100% style=\"border:2px solid;\" >"]
@@ -256,17 +256,17 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 [[view_advantages : *]]
 
 [[view_hand_weapons *res *ch]
-	[weapon *ch *weapon *tl *damage *reach *parry *cost *weight *st *notes]
+	[weapon *ch *weapon *tl *damage *reach *parry *cost *weight *st *lc *notes]
 	[ONE [*res "<tr>"] [lgdc *res *weapon] [lgdc *res *damage] [lgdc *res *reach] [lgdc *res [*parry]]
-		[lgdc *res *notes] [lgdc *res [$ *cost]] [lgdc *res [*weight]][*res "</tr>"]]
+		[lgdc *res [*lc]] [lgdc *res *notes] [lgdc *res [$ *cost]] [lgdc *res [*weight]][*res "</tr>"]]
 	fail
 ]
 [[view_hand_weapons : *]]
 
 [[view_ranged_weapons *res *ch]
-	[weapon *ch *weapon *tl *damage *acc *range *weight *rof *shots *cost *st *bulk *notes]
+	[weapon *ch *weapon *tl *damage *acc *range *weight *rof *shots *cost *st *bulk *rcl *lc *notes]
 	[ONE [*res "<tr>"] [lgdc *res *weapon] [lgdc *res *damage] [lgdc *res [*acc]] [lgdc *res [*range]] [lgdc *res [*rof]] [lgdc *res [*shots]]
-		[lgdc *res [*st]] [*res "</tr>"]]
+		[lgdc *res [*st]] [lgdc *res [*rcl]] [lgdc *res [*lc]] [lgdc *res *notes] [lgdc *res [$ *cost]] [lgdc *res [*weight]] [*res "</tr>"]]
 	fail
 ]
 [[view_ranged_weapons : *]]

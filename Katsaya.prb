@@ -22,14 +22,14 @@
 
 [wealth 'Very Wealthy']
 
-[skill "Dancing" Average dexterity -1]
-[skill "Fast-Draw (Knife)" Easy dexterity 1]
-[skill Knife Easy dexterity 1]
-[skill "Leadership" Average intelligence 2]
-[skill "Politics" Average intelligence 3]
-[skill "Savoir-Faire (Catho)" Easy intelligence 2]
-[skill "Savoir-Faire (Lantra)" Easy intelligence 0]
-[skill "Stealth" Average dexterity -1]
+[skill Dancing -1]
+[skill [Fast-Draw Knife] 1]
+[skill Knife 1]
+[skill Leadership 2]
+[skill Politics 3]
+[skill [Savoir-Faire Catho] 2]
+[skill [Savoir-Faire Lantra] 0]
+[skill Stealth -1]
 
 [disadvantage "Bad Temper (12)" -10]
 [disadvantage "Bully (12)" -10]

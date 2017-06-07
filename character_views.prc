@@ -231,7 +231,7 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 [[view_skills *res *ch]
 	[skill *ch *name *difficulty *attribute *level *relative *cost] [process_relative *attribute *relative *description]
 	[ONE
-		[*res "<tr>"] [lgdc *res *name] [lgdc *res *difficulty] [lgdc *res [*level]] [lgdc *res *description]
+		[*res "<tr>"] [lgdc *res [*name]] [lgdc *res *difficulty] [lgdc *res [*level]] [lgdc *res *description]
 		[*res "<td>" [[*cost]] "</td>"]
 		[*res "</tr>"]
 	]

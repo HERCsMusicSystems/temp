@@ -1,14 +1,14 @@
 
 program characters #auto
 
-[[character katsaya]]
-[[character farvaro]]
-[[character tsorvano]]
-[[character halmaro]]
-[[character kira]]
-[[character fighter-1]]
-[[character fighter-2]]
-[[character fighter-3]]
+[[character Katsaya]]
+[[character Farvaro]]
+[[character Tsorvano]]
+[[character Halmaro]]
+[[character Kira]]
+[[character Fighter-1]]
+[[character Fighter-2]]
+[[character Fighter-3]]
 [[character Karhan]]
 [[character Tekoff]]
 [[character lion]]

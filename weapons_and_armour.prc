@@ -4,7 +4,7 @@ import gurps
 program weapons_and_armour [
 				armour
 				weapon weapon_table weapon_mod parry_mod wp_mod aff burn cor cr cut fat imp pi- pi+ pi++ spec tox C $ No 'No skill'
-					'Large Knife' 'Small Knife' 'Two-Handed Sword'
+					'Large Knife' 'Small Knife'
 					Greatsword
 					'Regular Bow'
 				]

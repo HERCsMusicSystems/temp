@@ -14,10 +14,10 @@
 [language "Nomic" accented]
 
 [skill Administration 0]
-[skill 'Camel Riding' 0]
+[skill [Riding Camel] 0]
 [skill Diplomacy 1]
 [skill Gambling 1]
-[skill 'Horse Riding' 0]
+[skill [Riding Horse] 0]
 [skill Knife 0]
 [skill Merchant 4]
 [skill 'Sleight of Hand' 1]

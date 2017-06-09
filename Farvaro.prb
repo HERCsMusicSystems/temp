@@ -25,11 +25,11 @@
 [disadvantage "Laziness" -10]
 [disadvantage "Bully (mental only, but that's bad enough)" -10]
 [disadvantage "Cowardice" -10]
-[disadvantage "Dislikes roughing it" -1]
-[disadvantage "Hums tunelessly" -1]
-[disadvantage "Ignores those \"beneath him\"" -1]
-[disadvantage "Enjoys gambling, strange forfeits and sucker bets" -1]
-[disadvantage "Thinks he's a good navigator (he's not)." -1]
+[disadvantage "Dislikes roughing it"]
+[disadvantage "Hums tunelessly"]
+[disadvantage "Ignores those \"beneath him\""]
+[disadvantage "Enjoys gambling, strange forfeits and sucker bets"]
+[disadvantage "Thinks he's a good navigator (he's not)."]
 
 [weapon 'Large Knife']
 

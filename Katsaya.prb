@@ -36,11 +36,11 @@
 [disadvantage "Jealousy" -10]
 [disadvantage "Stubbornness" -5]
 
-[disadvantage "Angry about aging and lost beauty" -1]
-[disadvantage "Dislikes Lantara" -1]
-[disadvantage "Loyal to Catho when it suits her interest" -1]
-[disadvantage "Resents being married to non-hereditary noble" -1]
-[disadvantage "Stingy and generous by turns, unpredictably." -1]
+[disadvantage "Angry about aging and lost beauty"]
+[disadvantage "Dislikes Lantara"]
+[disadvantage "Loyal to Catho when it suits her interest"]
+[disadvantage "Resents being married to non-hereditary noble"]
+[disadvantage "Stingy and generous by turns, unpredictably."]
 
 [weapon 'Small Knife']
 

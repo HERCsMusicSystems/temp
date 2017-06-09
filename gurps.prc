@@ -1,10 +1,11 @@
 
 import gurps_skills
+import gurps_traits
 
 program gurps ['' d build_character
 				race name player PC NPC height weight age unspent_points size_modifier point_total
 				hit_points current_hit_points fatigue_points current_fatigue_points
-				strength_cost dexterity_cost intelligence_cost health_cost hit_points_cost will_cost perception_cost fatigue_points_cost
+				hit_points_cost fatigue_points_cost
 				damage damage_table basic_lift basic_lift_table
 				basic_speed basic_speed_formulae basic_speed_cost basic_move basic_move_formulae basic_move_cost
 				language language_cost languages_cost none broken accented native
@@ -16,26 +17,14 @@ program gurps ['' d build_character
 				reputation reputation_cost reputations all allmost most some
 				wealth wealths 'Dead Broke' Poor Struggling Comfortable Wealthy 'Very Wealthy' 'Filthy Rich' Multimillionaire
 				skill skill_cost skills_cost
-				advantage advantages_cost disadvantage disadvantages_cost
+				advantages_cost disadvantages_cost
 				]
 
 [[build_character *character *attribute : *attributes] [addcl [[*character : *attribute]]] / [build_character *character : *attributes]]
 [[build_character *character]]
 
-[[strength_cost *level *cost] [lazy [sum 10 *delta *level] [times *delta 10 *cost]]]
-[[health_cost *level *cost] [lazy [sum 10 *delta *level] [times *delta 10 *cost]]]
-[[dexterity_cost *level *cost] [lazy [sum 10 *delta *level] [times *delta 20 *cost]]]
-[[intelligence_cost *level *cost] [lazy [sum 10 *delta *level] [times *delta 20 *cost]]]
-
-[[strength_cost *ch *level *cost] [lazy [strength *ch *level] [sum 10 *delta *level] [times *delta 10 *cost]]]
-[[health_cost *ch *level *cost] [lazy [health *ch *level] [sum 10 *delta *level] [times *delta 10 *cost]]]
-[[dexterity_cost *ch *level *cost] [lazy [dexterity *ch *level] [sum 10 *delta *level] [times *delta 20 *cost]]]
-[[intelligence_cost *ch *level *cost] [lazy [intelligence *ch *level] [sum 10 *delta *level] [times *delta 20 *cost]]]
-
-[[hit_points_cost *ch *level *cost] [lazy [strength *ch *strength] [hit_points *ch *level] [sum *strength *delta *level] [times 2 *delta *cost]]]
-[[will_cost *ch *level *cost] [lazy [intelligence *ch *iq] [will *ch *level] [sum *iq *delta *level] [times 5 *delta *cost]]]
-[[perception_cost *ch *level *cost] [lazy [intelligence *ch *iq] [perception *ch *level] [sum *iq *delta *level] [times 5 *delta *cost]]]
-[[fatigue_points_cost *ch *level *cost] [lazy [health *ch *health] [fatigue_points *ch *level] [sum *health *delta *level] [times 3 *delta *cost]]]
+[[hit_points_cost *ch *level *cost] [lazy [strength *ch *strength *] [hit_points *ch *level] [sum *strength *delta *level] [times 2 *delta *cost]]]
+[[fatigue_points_cost *ch *level *cost] [lazy [health *ch *health *] [fatigue_points *ch *level] [sum *health *delta *level] [times 3 *delta *cost]]]
 [[basic_speed_cost *ch *level *cost] [lazy [basic_speed_formulae *ch *formulae] [basic_speed *ch *level] [sum *formulae *delta *level] [~ *cost 20 *delta]]]
 [[basic_move_cost *ch *level *cost] [lazy [basic_move_formulae *ch *formulae] [basic_move *ch *level] [sum *formulae *delta *level] [~ *cost 5 *delta]]]
 [[tech_level_cost *ch *level *cost] [lazy [tech_level *ch *level] [campaign_tech_level *ch *ctl] [sum *ctl *delta *level] [~ 5 *delta *cost]]]
@@ -51,21 +40,14 @@ program gurps ['' d build_character
 [[current_hit_points *ch *hp] [*ch current_hit_points *hp]] [[current_hit_points *ch *hp] [hit_points *ch *hp]]
 [[current_fatigue_points *ch *fp] [*ch current_fatigue_points *fp]] [[current_fatigue_points *ch *fp] [fatigue_points *ch *fp]]
 
-[[hit_points *ch *hp] [*ch hit_points *hp]] [[hit_points *ch *hp] [strength *ch *hp]]
-[[will *ch *will] [*ch will *will]] [[will *ch *will] [intelligence *ch *will]]
-[[perception *ch *per] [*ch perception *per]] [[perception *ch *per] [intelligence *ch *per]]
-[[fatigue_points *ch *fp] [*ch fatigue_points *fp]] [[fatigue_points *ch *fp] [health *ch *fp]]
+[[hit_points *ch *hp] [*ch hit_points *hp]] [[hit_points *ch *hp] [strength *ch *hp *]]
+[[fatigue_points *ch *fp] [*ch fatigue_points *fp]] [[fatigue_points *ch *fp] [health *ch *fp *]]
 [[basic_speed *ch *bs] [*ch basic_speed *bs] /]
 [[basic_speed *ch *bs] [basic_speed_formulae *ch *bs]]
-[[basic_speed_formulae *ch *bs] [health *ch *health] [dexterity *ch *dexterity] [+ *htdx *health *dexterity] [~ *bs *htdx 0.25]]
+[[basic_speed_formulae *ch *bs] [health *ch *health *] [dexterity *ch *dexterity *] [+ *htdx *health *dexterity] [~ *bs *htdx 0.25]]
 [[basic_move *ch *bm] [*ch basic_move *bm] /]
 [[basic_move *ch *bm] [basic_move_formulae *ch *bm]]
 [[basic_move_formulae *ch *bm] [basic_speed *ch *bmm] [trunc *bmm *bm]]
-
-[[strength *ch *s] [*ch strength *s]] [[strength *ch 10]]
-[[dexterity *ch *dx] [*ch dexterity *dx]] [[dexterity *ch 10]]
-[[intelligence *ch *iq] [*ch intelligence *iq]] [[intelligence *ch 10]]
-[[health *ch *ht] [*ch health *ht]] [[health *ch 10]]
 
 [[tech_level *ch *tl] [*ch tech_level *tl] /]
 [[tech_level *ch 3]]
@@ -98,7 +80,7 @@ program gurps ['' d build_character
 		[[*ch skill *name *relative] [skills *name *difficulty *attribute]]
 		[[*ch skill *name *difficulty *attribute *relative]]
 	]
-	[ONE [*attribute *ch *attr]]
+	[ONE [*attribute *ch *attr *]]
 	[skill_cost *difficulty *relative *attr *level *cost]
 ]
 [[skill *ch *name *difficulty *attribute *level *relative *cost] [*ch skill *name *difficulty *attribute *level *relative *cost]]
@@ -112,19 +94,17 @@ program gurps ['' d build_character
 [[skill_cost *relative *cost] [times *relative 4 *cost] [< 0 *relative *cost]]
 [[skills_cost *ch *cost] [isall *costs *c [skill *ch * * * * * *c]] [+ *cost : *costs]]
 
-[[advantage *ch *description *cost] [*ch advantage *description *cost]]
 [[advantages_cost *ch *cost] [isall *costs *c [advantage *ch * *c]] [+ *cost : *costs]]
-[[disadvantage *ch *description *cost] [*ch disadvantage *description *cost]]
 [[disadvantages_cost *ch *cost] [isall *costs *c [disadvantage *ch * *c]] [+ *cost : *costs]]
 
 [[point_total *ch *pt]
-	[strength_cost *ch * *strength]
-	[dexterity_cost *ch * *dexterity]
-	[intelligence_cost *ch * *intelligence]
-	[health_cost *ch * *health]
+	[strength *ch * *strength]
+	[dexterity *ch * *dexterity]
+	[intelligence *ch * *intelligence]
+	[health *ch * *health]
 	[hit_points_cost *ch * *hit_points]
-	[will_cost *ch * *will]
-	[perception_cost *ch * *perception]
+	[will *ch * *will]
+	[perception *ch * *perception]
 	[fatigue_points_cost *ch * *fatigue_points]
 	[basic_speed_cost *ch * *basic_speed]
 	[basic_move_cost *ch * *basic_move]
@@ -195,14 +175,14 @@ program gurps ['' d build_character
 [[damage_table *st [10 d 2] [12 d 2]] [< *st 100] /]
 [[damage_table *st [*thr d 0] [*sw d 0]] [>= *st 100] / [div *st 10 *st10] [++ *st10 *thr] [+ *st10 3 *sw]]
 
-[[damage *character : *damage] [strength *character *strength] [damage_table *strength : *damage]]
+[[damage *character : *damage] [strength *character *strength *] [damage_table *strength : *damage]]
 
 [[basic_lift_table 5 5]]
 [[basic_lift_table 8 13]]
 [[basic_lift_table 9 16]]
 [[basic_lift_table *st *bl] [>= *st 10] / [~ *bll *st *st 0.2] [+ *bll 0.5 *blll] [trunc *blll *bl]]
 [[basic_lift_table *st *bl] [~ *bl *st *st 0.2]]
-[[basic_lift *character *bl] [strength *character *strength] [basic_lift_table *strength *bl]]
+[[basic_lift *character *bl] [strength *character *strength *] [basic_lift_table *strength *bl]]
 
 [[language_cost none 0]]
 [[language_cost broken 1]]

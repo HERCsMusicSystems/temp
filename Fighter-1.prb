@@ -1,7 +1,7 @@
 [build_character Fighter-1
 [strength 13] [dexterity 12] [intelligence 9]
-[skill Broadsword Average dexterity 4]
-[skill Knife Easy dexterity 0]
+[skill Broadsword 4]
+[skill Knife 0]
 [weapon Broadsword]
 [weapon 'Large Knife']
 ]

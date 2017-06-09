@@ -16,7 +16,7 @@
 [skill Broadsword 3]
 [skill Fast-Talk -1]
 [skill Gambling 2]
-[skill 'Horse Riding' 1]
+[skill [Riding Horse] 1]
 [skill Knife 1]
 [skill Leadership 0]
 [weapon Broadsword]

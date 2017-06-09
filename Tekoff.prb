@@ -1,0 +1,6 @@
+[build_character Tekoff
+[strength 9] [intelligence 11] [health 9]
+[language "Lantrai" accented]
+[skill Merchant 4]
+] [exit]
+

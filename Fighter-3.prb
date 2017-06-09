@@ -1,8 +1,8 @@
 [build_character Fighter-3
 [strength 12] [dexterity 12]
-[skill Bow Average dexterity 3]
-[skill Broadsword Average dexterity 1]
-[skill Knife Easy dexterity 1]
+[skill Bow 3]
+[skill Broadsword 1]
+[skill Knife 1]
 [weapon Broadsword]
 [weapon 'Large Knife']
 [weapon 'Regular Bow']

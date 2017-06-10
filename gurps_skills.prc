@@ -1,6 +1,7 @@
 
 program gurps_skills [
 						skills Easy Average Hard 'Very Hard' strength dexterity intelligence health perception will
+						hit_points current_hit_points fatigue_points current_fatigue_points
 						Fast-Talk Gambling Riding Horse Camel Leadership Dancing Singing Politics Savoir-Faire 'First Aid' Poetry
 						Administration Diplomacy Merchant Accounting Economics Law Mathematics
 						Fast-Draw Stealth 'Detect Lies' 'Sleight of Hand' Survival Desert Mountain 'Musical Instrument' 'Public Speaking' 'Sex Appeal' Streetwise
@@ -31,6 +32,18 @@ program gurps_skills [
 [[will *ch *level *cost] [*ch will *level] [intelligence *ch *iq *] [sum *iq *delta *level] [times 5 *delta *cost]]
 [[will *ch *level *cost] [*ch will *level *cost]]
 [[will *ch *level 0] [intelligence *ch *level *]]
+
+[[hit_points *ch *level *cost] [*ch hit_points *level] [strength *ch *strength *] [sum *strength *delta *level] [times 2 *delta *cost]]
+[[hit_points *ch *level *cost] [*ch hit_points *level *cost]]
+[[hit_points *ch *level 0] [strength *ch *level *]]
+[[current_hit_points *ch *hp] [*ch current_hit_points *hp]]
+[[current_hit_points *ch *hp] [hit_points *ch *hp *]]
+
+[[fatigue_points *ch *level *cost] [*ch fatigue_points *level] [health *ch *health *] [sum *health *delta *level] [times 3 *delta *cost]]
+[[fatigue_points *ch *level *cost] [*ch fatigue_points *level *cost]]
+[[fatigue_points *ch *level 0] [health *ch *level *]]
+[[current_fatigue_points *ch *fp] [*ch current_fatigue_points *fp]]
+[[current_fatigue_points *ch *fp] [health *ch *fp *]]
 
 [[skills Dancing Average dexterity]]
 [[skills Singing Easy health]]

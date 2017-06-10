@@ -15,11 +15,11 @@
 [advantage "Talent: Mathematical Ability (+1)" 10]
 
 [disadvantage "Sense of Duty to Marchant's Guild" -10]
-[disadvantage "Always impeccably groomed, event when on the road" -1]
-[disadvantage "Collects paintings and sculptures" -1]
-[disadvantage "Genuinely likes people" -1]
-[disadvantage "Likes to travel" -1]
-[disadvantage "Workaholic" -1]
+[disadvantage "Always impeccably groomed, event when on the road"]
+[disadvantage "Collects paintings and sculptures"]
+[disadvantage "Genuinely likes people"]
+[disadvantage "Likes to travel"]
+[disadvantage "Workaholic"]
 
 [skill Accounting 0]
 [skill Administration -1]

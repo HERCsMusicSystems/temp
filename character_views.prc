@@ -71,7 +71,7 @@ program character_views [chattr decor decormt decorpt view_language view_culture
 		[*res "DAMAGE Thr"] [decor *res *damage_thr] [*res " Sw"] [decor *res *damage_sw] [*res "<br/>"]
 		[basic_speed *ch *basic_speed *basic_speed_cost]
 		[*res "BASIC SPEED"] [decor *res *basic_speed] [*res "[" [*basic_speed_cost] "] "] [*res "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"]
-		[basic_move_cost *ch *basic_move *basic_move_cost]
+		[basic_move *ch *basic_move *basic_move_cost]
 		[~ *basic_lift2 *basic_lift 2] [~ *basic_lift3 *basic_lift 3] [~ *basic_lift6 *basic_lift 6] [~ *basic_lift10 *basic_lift 10]
 		[*res "BASIC MOVE"] [decor *res *basic_move] [*res "[" [*basic_move_cost] "]<br/>"]
 		[*res "<table width=100% style=\"border:2px solid;\" >"]

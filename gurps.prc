@@ -5,7 +5,7 @@ import gurps_traits
 program gurps ['' d build_character
 				race name player PC NPC height weight age unspent_points size_modifier point_total
 				damage damage_table basic_lift basic_lift_table
-				basic_speed basic_speed_formulae basic_speed_cost basic_move basic_move_formulae basic_move_cost
+				basic_move basic_move_formulae basic_move_cost
 				language language_cost languages_cost none broken accented native
 				tech_level campaign_tech_level tech_level_cost tech_levels
 				cultural_familiarity cultural_familiarities_cost
@@ -21,7 +21,6 @@ program gurps ['' d build_character
 [[build_character *character *attribute : *attributes] [addcl [[*character : *attribute]]] / [build_character *character : *attributes]]
 [[build_character *character]]
 
-[[basic_speed_cost *ch *level *cost] [lazy [basic_speed_formulae *ch *formulae] [basic_speed *ch *level] [sum *formulae *delta *level] [~ *cost 20 *delta]]]
 [[basic_move_cost *ch *level *cost] [lazy [basic_move_formulae *ch *formulae] [basic_move *ch *level] [sum *formulae *delta *level] [~ *cost 5 *delta]]]
 [[tech_level_cost *ch *level *cost] [lazy [tech_level *ch *level] [campaign_tech_level *ch *ctl] [sum *ctl *delta *level] [~ 5 *delta *cost]]]
 
@@ -34,12 +33,9 @@ program gurps ['' d build_character
 [[unspent_points *ch *pt] [*ch unspent_points *pt]] [[unspent_points *ch 0]]
 [[appearance *ch *a] [*ch appearance *a]] [[appearance * '']]
 
-[[basic_speed *ch *bs] [*ch basic_speed *bs] /]
-[[basic_speed *ch *bs] [basic_speed_formulae *ch *bs]]
-[[basic_speed_formulae *ch *bs] [health *ch *health *] [dexterity *ch *dexterity *] [+ *htdx *health *dexterity] [~ *bs *htdx 0.25]]
 [[basic_move *ch *bm] [*ch basic_move *bm] /]
 [[basic_move *ch *bm] [basic_move_formulae *ch *bm]]
-[[basic_move_formulae *ch *bm] [basic_speed *ch *bmm] [trunc *bmm *bm]]
+[[basic_move_formulae *ch *bm] [basic_speed *ch *bmm *] [trunc *bmm *bm]]
 
 [[tech_level *ch *tl] [*ch tech_level *tl] /]
 [[tech_level *ch 3]]
@@ -98,7 +94,7 @@ program gurps ['' d build_character
 	[will *ch * *will]
 	[perception *ch * *perception]
 	[fatigue_points *ch * *fatigue_points]
-	[basic_speed_cost *ch * *basic_speed]
+	[basic_speed *ch * *basic_speed]
 	[basic_move_cost *ch * *basic_move]
 	[tech_level_cost *ch * *tech_level]
 	[languages_cost *ch *languages]

@@ -1,7 +1,7 @@
 
 program gurps_skills [
 						skills Easy Average Hard 'Very Hard' strength dexterity intelligence health perception will
-						hit_points current_hit_points fatigue_points current_fatigue_points
+						hit_points current_hit_points fatigue_points current_fatigue_points basic_speed basic_speed_formulae
 						Fast-Talk Gambling Riding Horse Camel Leadership Dancing Singing Politics Savoir-Faire 'First Aid' Poetry
 						Administration Diplomacy Merchant Accounting Economics Law Mathematics
 						Fast-Draw Stealth 'Detect Lies' 'Sleight of Hand' Survival Desert Mountain 'Musical Instrument' 'Public Speaking' 'Sex Appeal' Streetwise
@@ -44,6 +44,11 @@ program gurps_skills [
 [[fatigue_points *ch *level 0] [health *ch *level *]]
 [[current_fatigue_points *ch *fp] [*ch current_fatigue_points *fp]]
 [[current_fatigue_points *ch *fp] [health *ch *fp *]]
+
+[[basic_speed *ch *level *cost] [*ch basic_speed *level] [basic_speed_formulae *ch *formulae] [sum *formulae *delta *level] [~ *cost 20 *delta]]
+[[basic_speed *ch *level *cost] [*ch basic_speed *level *cost]]
+[[basic_speed *ch *level 0] [basic_speed_formulae *ch *level]]
+[[basic_speed_formulae *ch *bs] [health *ch *health *] [dexterity *ch *dexterity *] [+ *htdx *health *dexterity] [~ *bs *htdx 0.25]]
 
 [[skills Dancing Average dexterity]]
 [[skills Singing Easy health]]

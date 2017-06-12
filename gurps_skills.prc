@@ -6,7 +6,7 @@ program gurps_skills [
 						Administration Diplomacy Merchant Accounting Economics Law Mathematics
 						Fast-Draw Stealth 'Detect Lies' 'Sleight of Hand' Survival Desert Mountain 'Musical Instrument' 'Public Speaking' 'Sex Appeal' Streetwise
 						Shield Buckler Force Brawling Running
-						Knife Broadsword 'Two-Handed Sword' Bow
+						Knife Broadsword Saber Rapier Shortsword Smallsword 'Two-Handed Sword' Bow
 					]
 
 [[strength *ch *level *cost] [*ch strength *level] [sum 10 *delta *level] [times *delta 10 *cost]]
@@ -84,6 +84,10 @@ program gurps_skills [
 [[skills Running Average health]]
 
 [[skills Broadsword Average dexterity]]
+[[skills Rapier Average dexterity]]
+[[skills Saber Average dexterity]]
+[[skills Smallsword Average dexterity]]
+[[skills Shortsword Average dexterity]]
 [[skills Knife Easy dexterity]]
 [[skills 'Two-Handed Sword' Average dexterity]]
 [[skills Bow Average dexterity]]

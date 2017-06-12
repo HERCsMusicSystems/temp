@@ -13,6 +13,7 @@ program characters #auto
 [[character Tekoff]]
 [[character lion]]
 [[character Riana]]
+[[character Nasir]]
 
 end .
 

@@ -1,0 +1,23 @@
+[build_character Nasir
+[strength 14] [dexterity 14]
+
+[reputation -4 "Assasin" most most]
+
+[advantage 'Extra Attack' 25]
+
+[skill Broadsword 2]
+;[skill Rapier 2]
+;[skill Saber 2]
+;[skill Smallsword 2]
+;[skill Shortsword 2]
+
+[weapon Broadsword]
+;[weapon Shortsword]
+;[weapon Rapier]
+;[weapon Saber]
+;[weapon Smallsword]
+
+;[tech_level 4]
+;[campaign_tech_level 3]
+] [exit]
+

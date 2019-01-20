@@ -2,7 +2,7 @@
 import gurps_skills
 import gurps_traits
 
-program gurps ['' d build_character
+program gurps [`` d build_character
 				race name player PC NPC height weight age unspent_points size_modifier point_total
 				damage damage_table basic_lift basic_lift_table
 				language language_cost languages_cost none broken accented native
@@ -10,26 +10,26 @@ program gurps ['' d build_character
 				cultural_familiarity cultural_familiarities_cost
 				status status_cost
 				appearance appearance_cost appearances
-				Horrific Monstrous Hideous Ugly Unattractive Attractive Handsome Beautiful 'Very Handsome' 'Very Beautiful' Transcendent
+				Horrific Monstrous Hideous Ugly Unattractive Attractive Handsome Beautiful `Very Handsome` `Very Beautiful` Transcendent
 				reputation reputation_cost reputations all allmost most some
-				wealth wealths 'Dead Broke' Poor Struggling Comfortable Wealthy 'Very Wealthy' 'Filthy Rich' Multimillionaire
+				wealth wealths `Dead Broke` Poor Struggling Comfortable Wealthy `Very Wealthy` `Filthy Rich` Multimillionaire
 				skill skill_cost skills_cost
 				advantages_cost disadvantages_cost
 				]
 
 [[build_character *character *attribute : *attributes] [addcl [[*character : *attribute]]] / [build_character *character : *attributes]]
-[[build_character *character]]
+[[build_character *character] [addcl [[*character]]]]
 
 [[tech_level_cost *ch *level *cost] [lazy [tech_level *ch *level] [campaign_tech_level *ch *ctl] [sum *ctl *delta *level] [~ 5 *delta *cost]]]
 
 [[name *ch *name] [*ch name *name]] [[name *name *name]]
 [[player *ch *player] [*ch player *player]] [[player * NPC]]
-[[age *ch *age] [*ch age *age]] [[age * '']]
-[[height *ch *ht] [*ch height *ht]] [[height * '']]
-[[weight *ch *wt] [*ch weight *wt]] [[weight * '']]
+[[age *ch *age] [*ch age *age]] [[age * ``]]
+[[height *ch *ht] [*ch height *ht]] [[height * ``]]
+[[weight *ch *wt] [*ch weight *wt]] [[weight * ``]]
 [[size_modifier *ch *m] [*ch size_modifier *m]] [[size_modifier * 0]]
 [[unspent_points *ch *pt] [*ch unspent_points *pt]] [[unspent_points *ch 0]]
-[[appearance *ch *a] [*ch appearance *a]] [[appearance * '']]
+[[appearance *ch *a] [*ch appearance *a]] [[appearance * ``]]
 
 [[tech_level *ch *tl] [*ch tech_level *tl] /]
 [[tech_level *ch 3]]
@@ -70,7 +70,7 @@ program gurps ['' d build_character
 [[skill_cost Average *relative *attr *level *cost] [skill_cost *relative *cost] [+ *level *attr *relative]]
 [[skill_cost Easy *relative *attr *level *cost] [+ *relative -1 *r2] [skill_cost *r2 *cost] [+ *level *attr *relative]]
 [[skill_cost Hard *relative *attr *level *cost] [+ *relative 1 *r2] [skill_cost *r2 *cost] [+ *level *attr *relative]]
-[[skill_cost 'Very Hard' *relative *attr *level *cost] [+ *relative 2 *r2] [skill_cost *r2 *cost] [+ *level *attr *relative]]
+[[skill_cost `Very Hard` *relative *attr *level *cost] [+ *relative 2 *r2] [skill_cost *r2 *cost] [+ *level *attr *relative]]
 [[skill_cost -1 1] /]
 [[skill_cost 0 2] /]
 [[skill_cost *relative *cost] [times *relative 4 *cost] [< 0 *relative *cost]]
@@ -185,14 +185,14 @@ program gurps ['' d build_character
 [[tech_levels 11 "Age of Exotic Matter" "?" 75000]]
 [[tech_levels * "Whatever the GM likes!" "?" 100000]]
 
-[[wealths 0.0 'Dead Broke' -25]]
+[[wealths 0.0 `Dead Broke` -25]]
 [[wealths 0.2 Poor -15]]
 [[wealths 0.5 Struggling -10]]
 [[wealths 1.0 Average 0]]
 [[wealths 2.0 Comfortable 10]]
 [[wealths 5.0 Wealthy 20]]
-[[wealths 20.0 'Very Wealthy' 30]]
-[[wealths 100.0 'Filthy Rich' 50]]
+[[wealths 20.0 `Very Wealthy` 30]]
+[[wealths 100.0 `Filthy Rich` 50]]
 [[wealths *multiplier [Multimillionaire *level] *cost] [mac *level 25 50 *cost] [pow 10 *level *m] [~ *multiplier 100.0 *m]]
 
 [[appearances -6 Horrific -24]]
@@ -204,8 +204,8 @@ program gurps ['' d build_character
 [[appearances 1 Attractive 4]]
 [[appearances [2 4] Handsome 12]]
 [[appearances [2 4] Beautiful 12]]
-[[appearances [2 6] 'Very Handsome' 16]]
-[[appearances [2 6] 'Very Beautiful' 16]]
+[[appearances [2 6] `Very Handsome` 16]]
+[[appearances [2 6] `Very Beautiful` 16]]
 [[appearances [2 8] Transcendent 20]]
 
 [[reputations *reaction all *cost] [~ *reaction 1.0 *cost]]
@@ -230,7 +230,7 @@ program gurps ['' d build_character
 
 [[cultural_familiarity *ch *culture *cost] [*ch cultural_familiarity *culture *cost]]
 
-end .
+end := [[command]] .
 
 
 

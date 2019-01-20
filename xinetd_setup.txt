@@ -1,0 +1,3 @@
+/etc/services
+/etc/xinet.d/myscript
+/etc/init.d/xinetd restart

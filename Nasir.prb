@@ -1,23 +1,33 @@
 [build_character Nasir
-[strength 14] [dexterity 14]
 
-[reputation -4 "Assasin" most most]
 
-[advantage 'Extra Attack' 25]
+; -15 points Social Stigma of Outlaw => Barbarian of equal value
+; 15 point Unusual Background
+; late TL3 or even TL4 optics or chemistry but no gunpowder
+; cultural and language barrier
+; default Savour-Faire at additional -2
 
-[skill Broadsword 2]
-;[skill Rapier 2]
-;[skill Saber 2]
-;[skill Smallsword 2]
-;[skill Shortsword 2]
 
-[weapon Broadsword]
-;[weapon Shortsword]
-;[weapon Rapier]
-;[weapon Saber]
-;[weapon Smallsword]
+;[strength 14]
+;[dexterity 14]
 
-;[tech_level 4]
-;[campaign_tech_level 3]
+;[reputation -4 "Assasin" most most]
+
+;[advantage 'Extra Attack' 25]
+
+;[skill Broadsword 2]
+;;[skill Rapier 2]
+;;[skill Saber 2]
+;;[skill Smallsword 2]
+;;[skill Shortsword 2]
+
+;[weapon Broadsword]
+;;[weapon Shortsword]
+;;[weapon Rapier]
+;;[weapon Saber]
+;;[weapon Smallsword]
+
+[tech_level 4]
+[campaign_tech_level 3]
 ] [exit]
 

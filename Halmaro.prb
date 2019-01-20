@@ -5,7 +5,7 @@
 [weight "190 lbs."]
 [strength 12] [dexterity 12] [intelligence 14] [health 12]
 
-[wealth 'Filthy Rich']
+[wealth `Filthy Rich`]
 [status 5 "Merchant's guild master"]
 [reputation 4 "All the time" all all]
 

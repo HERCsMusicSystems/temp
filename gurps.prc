@@ -1,4 +1,5 @@
 
+import studio
 import gurps_skills
 import gurps_traits
 
